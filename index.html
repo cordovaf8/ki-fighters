@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ki Legends</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Loading screen: shown while game.js (about 40 MB with all the fighter art) downloads. */
+    #boot { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1em;
+      background: #070918; color: #e8ecff; font: 600 16px/1.3 system-ui, "Segoe UI", sans-serif; transition: opacity 0.35s; }
+    #boot.done { opacity: 0; pointer-events: none; }
+    #boot .blogo { font: italic 900 3.4em/1 Impact, "Arial Black", sans-serif; color: #ffe14a; letter-spacing: 0.04em; text-shadow: 0 0.06em 0 #b4501e; }
+    #boot .btrack { width: min(22em, 80vw); height: 0.55em; border-radius: 1em; background: #1d2240; overflow: hidden; }
+    #boot .bfill { width: 0; height: 100%; border-radius: 1em; background: linear-gradient(90deg, #ff9a3c, #ffe14a); transition: width 0.2s; }
+    #boot.unknown .bfill { width: 30%; animation: bootslide 1.1s ease-in-out infinite alternate; }
+    @keyframes bootslide { from { margin-left: 0; } to { margin-left: 70%; } }
+    #boot .bmsg { font-size: 0.85em; color: #9aa3d0; }
+  </style>
 </head>
 <body>
   <div id="stage">
@@ -50,8 +62,70 @@
     <div class="layer"><div id="toast"></div></div>
   </div>
 
+  <div id="boot" class="unknown">
+    <div class="blogo">KI LEGENDS</div>
+    <div class="btrack"><div class="bfill"></div></div>
+    <div class="bmsg">Loading fighters...</div>
+  </div>
+
   <!-- game.js is the whole game bundled into one file (see build.mjs), so this
-       page works when opened straight from disk, with no server. -->
-  <script src="game.js"></script>
+       page works when opened straight from disk, with no server. On a website
+       (GitHub Pages) it is downloaded with a progress bar first; from disk it
+       loads directly. -->
+  <script>
+  (function () {
+    var boot = document.getElementById('boot');
+    var fill = boot.querySelector('.bfill');
+    var msg = boot.querySelector('.bmsg');
+
+    // Hide the loading screen once the game has drawn its menu.
+    function whenReady() {
+      var t0 = Date.now();
+      (function check() {
+        var ui = document.getElementById('ui');
+        if ((ui && ui.children.length) || Date.now() - t0 > 8000) {
+          boot.classList.add('done');
+          setTimeout(function () { boot.remove(); }, 400);
+        } else requestAnimationFrame(check);
+      })();
+    }
+    function failed() {
+      boot.classList.remove('unknown');
+      msg.textContent = 'The game could not load. Check your connection and refresh the page.';
+    }
+    function run(src) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = whenReady;
+      s.onerror = failed;
+      document.body.appendChild(s);
+    }
+
+    if (location.protocol === 'file:' || !window.XMLHttpRequest || !window.URL || !URL.createObjectURL) return run('game.js');
+
+    var x = new XMLHttpRequest();
+    x.open('GET', 'game.js');
+    x.responseType = 'blob';
+    x.onprogress = function (e) {
+      var mb = (e.loaded / 1048576).toFixed(1);
+      if (e.lengthComputable && e.total > 0 && e.loaded <= e.total) {
+        boot.classList.remove('unknown');
+        fill.style.width = Math.round((e.loaded / e.total) * 100) + '%';
+        msg.textContent = 'Loading fighters... ' + mb + ' / ' + (e.total / 1048576).toFixed(1) + ' MB';
+      } else {
+        msg.textContent = 'Loading fighters... ' + mb + ' MB';
+      }
+    };
+    x.onload = function () {
+      if (x.status !== 200) return run('game.js'); // let the browser try it the plain way
+      boot.classList.remove('unknown');
+      fill.style.width = '100%';
+      msg.textContent = 'Starting...';
+      run(URL.createObjectURL(x.response));
+    };
+    x.onerror = function () { run('game.js'); };
+    x.send();
+  })();
+  </script>
 </body>
 </html>
