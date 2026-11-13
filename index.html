@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ki Legends</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="stage">
+    <!-- Phaser canvas -->
+    <div id="game"></div>
+
+    <!-- Battle HUD -->
+    <div id="hud" class="layer hidden">
+      <div class="fpanel left">
+        <div class="who"><span class="fname" id="p-name"></span><span class="fform" id="p-form"></span></div>
+        <div class="bar hp" id="p-hpbar"><i id="p-hp"></i><b id="p-hpn"></b></div>
+        <div class="bar ki"><i id="p-ki"></i><b id="p-kin"></b></div>
+        <div class="bar st"><i id="p-st"></i></div>
+        <div class="status" id="p-status"></div>
+      </div>
+
+      <div class="focus" id="focus">
+        <span class="flabel">FOCUS</span>
+        <div class="bar"><i id="g-fill"></i></div>
+        <span class="fready" id="fready"></span>
+      </div>
+
+      <div class="fpanel right">
+        <div class="who"><span class="fform" id="e-form"></span><span class="fname" id="e-name"></span></div>
+        <div class="bar hp" id="e-hpbar"><i id="e-hp"></i><b id="e-hpn"></b></div>
+        <div class="bar ki"><i id="e-ki"></i></div>
+        <div class="status" id="e-status"></div>
+      </div>
+
+      <div id="queue"></div>
+      <div id="hint"></div>
+      <div id="banner"></div>
+      <div id="clash" class="hidden">
+        <div class="ctitle">BEAM CLASH!</div>
+        <div class="cbar"><i id="c-fill"></i><span></span></div>
+        <div class="ctime"><i id="c-time"></i></div>
+        <div class="csub" id="csub"></div>
+      </div>
+    </div>
+
+    <!-- Menus, technique selection, results -->
+    <div id="ui" class="layer"></div>
+    <div class="layer"><div id="toast"></div></div>
+  </div>
+
+  <!-- game.js is the whole game bundled into one file (see build.mjs), so this
+       page works when opened straight from disk, with no server. -->
+  <script src="game.js"></script>
+</body>
+</html>

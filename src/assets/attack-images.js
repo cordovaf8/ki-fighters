@@ -1,0 +1,13 @@
+import attack0 from "../../assets/characters/attacks/01-jin.png";
+import attack1 from "../../assets/characters/attacks/02-ponytail.png";
+import attack2 from "../../assets/characters/attacks/03-alien.png";
+import attack3 from "../../assets/characters/attacks/04-redhair.png";
+import attack4 from "../../assets/characters/attacks/05-android.png";
+import attack5 from "../../assets/characters/attacks/06-brawler.png";
+import attack6 from "../../assets/characters/attacks/07-lunar.png";
+import attack7 from "../../assets/characters/attacks/08-green.png";
+import attack8 from "../../assets/characters/attacks/09-redgi.png";
+import attack9 from "../../assets/characters/attacks/10-gold.png";
+import attack10 from "../../assets/characters/attacks/11-beast.png";
+import attack11 from "../../assets/characters/attacks/12-mage.png";
+export const attackImages = [attack0,attack1,attack2,attack3,attack4,attack5,attack6,attack7,attack8,attack9,attack10,attack11];

@@ -1,0 +1,13 @@
+import special0 from "../../assets/characters/specials/01-jin.png";
+import special1 from "../../assets/characters/specials/02-ponytail.png";
+import special2 from "../../assets/characters/specials/03-alien.png";
+import special3 from "../../assets/characters/specials/04-redhair.png";
+import special4 from "../../assets/characters/specials/05-android.png";
+import special5 from "../../assets/characters/specials/06-brawler.png";
+import special6 from "../../assets/characters/specials/07-lunar.png";
+import special7 from "../../assets/characters/specials/08-green.png";
+import special8 from "../../assets/characters/specials/09-redgi.png";
+import special9 from "../../assets/characters/specials/10-gold.png";
+import special10 from "../../assets/characters/specials/11-beast.png";
+import special11 from "../../assets/characters/specials/12-mage.png";
+export const specialImages = [special0,special1,special2,special3,special4,special5,special6,special7,special8,special9,special10,special11];

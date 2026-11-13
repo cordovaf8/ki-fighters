@@ -1,0 +1,5 @@
+import fs from 'node:fs';import sharp from 'sharp';
+const root='C:/Users/GLaptop/.codex/generated_images/01a1d12c-28a3-73c0-a982-c59e0084389e/';
+const batches=[{token:'550afc7b-b15c-4d3c-8890-f267139bece4',file:'assets/characters/melee/punch-repairs-a.png',poses:['brakka/form-1','brakka/form-2','selune/form-1','selune/form-2']},{token:'74db9c6b-0031-412e-9bed-5afbb4a683fc',file:'assets/characters/melee/punch-repairs-b.png',poses:['zeta/form-1','zeta/form-2','draal/form-2','redhair/form-2']}];
+for(const b of batches){if(!fs.existsSync(b.file))fs.copyFileSync(root+'exec-'+b.token+'.png',b.file);const m=await sharp(b.file).metadata();for(let i=0;i<4;i++){const col=i%2,row=Math.floor(i/2),left=Math.round(col*m.width/2),top=Math.round(row*m.height/2),width=Math.round((col+1)*m.width/2)-left,height=Math.round((row+1)*m.height/2)-top;await sharp(b.file).extract({left,top,width,height}).png().toFile('assets/characters/'+b.poses[i]+'-punch-v2.png');}}
+console.log('Repaired eight clipped punch sprites.');

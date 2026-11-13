@@ -1,0 +1,19 @@
+{
+  "name": "ki-legends",
+  "version": "0.1.0",
+  "description": "Ki Legends - an original grid-based anime battle game built with Phaser 4",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "dependencies": {
+    "phaser": "4.2.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "sharp": "^0.35.5"
+  }
+}

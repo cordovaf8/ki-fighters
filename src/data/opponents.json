@@ -1,0 +1,234 @@
+{
+  "ladder": [
+    {
+      "fighter": "brakka",
+      "stage": "canyon",
+      "level": 1,
+      "stats": {
+        "hp": 240,
+        "ki": 100,
+        "atk": 75,
+        "def": 90
+      },
+      "maxForm": 2,
+      "ai": {
+        "melee": 0.75,
+        "meleeChain": 0.85,
+        "parry": 0.05,
+        "thinkMs": 560,
+        "dodge": 0.3,
+        "aggression": 0.5,
+        "blastCooldownMs": 1000,
+        "chargeChance": 0.1,
+        "blockChance": 0.1,
+        "techChance": 0.35,
+        "clashRate": 5,
+        "counterBeam": 0.1
+      },
+      "deck": [
+        "meteor_rush",
+        "rapid_barrage"
+      ],
+      "queueSize": 1,
+      "rewards": [
+        "ground_seize",
+        "meteor_rush"
+      ],
+      "blurb": "A loud brawler who rules the canyon pits. Slow to react, but his rush hurts."
+    },
+    {
+      "fighter": "selune",
+      "stage": "moonlake",
+      "level": 3,
+      "stats": {
+        "hp": 300,
+        "ki": 120,
+        "atk": 90,
+        "def": 95
+      },
+      "maxForm": 2,
+      "ai": {
+        "melee": 0.25,
+        "meleeChain": 0.5,
+        "parry": 0.15,
+        "thinkMs": 440,
+        "dodge": 0.5,
+        "aggression": 0.65,
+        "blastCooldownMs": 800,
+        "chargeChance": 0.2,
+        "blockChance": 0.15,
+        "techChance": 0.5,
+        "clashRate": 7,
+        "counterBeam": 0.5
+      },
+      "deck": [
+        "energy_wave",
+        "scatter_shot",
+        "rapid_barrage",
+        "energy_charge"
+      ],
+      "queueSize": 2,
+      "rewards": [
+        "energy_wave",
+        "power_ascension"
+      ],
+      "blurb": "An energy specialist who answers beams with beams. Expect a clash."
+    },
+    {
+      "fighter": "vorr",
+      "stage": "nebula",
+      "level": 5,
+      "stats": {
+        "hp": 380,
+        "ki": 120,
+        "atk": 105,
+        "def": 105
+      },
+      "maxForm": 2,
+      "ai": {
+        "melee": 0.6,
+        "meleeChain": 0.75,
+        "parry": 0.2,
+        "thinkMs": 360,
+        "dodge": 0.6,
+        "aggression": 0.75,
+        "blastCooldownMs": 650,
+        "chargeChance": 0.2,
+        "blockChance": 0.25,
+        "techChance": 0.55,
+        "clashRate": 8.5,
+        "counterBeam": 0.4
+      },
+      "deck": [
+        "meteor_rush",
+        "explosive_aura",
+        "ground_seize",
+        "rapid_barrage",
+        "afterimage"
+      ],
+      "queueSize": 2,
+      "rewards": [
+        "explosive_aura",
+        "scatter_shot",
+        "afterimage"
+      ],
+      "blurb": "A raider from beyond the stars who steals ground and breaks what is left."
+    },
+    {
+      "fighter": "zeta",
+      "stage": "foundry",
+      "level": 7,
+      "stats": {
+        "hp": 460,
+        "ki": 140,
+        "atk": 115,
+        "def": 120
+      },
+      "maxForm": 2,
+      "ai": {
+        "melee": 0.45,
+        "meleeChain": 0.9,
+        "parry": 0.35,
+        "thinkMs": 300,
+        "dodge": 0.7,
+        "aggression": 0.8,
+        "blastCooldownMs": 520,
+        "chargeChance": 0.25,
+        "blockChance": 0.35,
+        "techChance": 0.6,
+        "clashRate": 10,
+        "counterBeam": 0.6
+      },
+      "deck": [
+        "energy_wave",
+        "scatter_shot",
+        "explosive_aura",
+        "final_burst",
+        "energy_charge"
+      ],
+      "queueSize": 3,
+      "rewards": [
+        "final_burst",
+        "energy_charge"
+      ],
+      "blurb": "A combat android with machine-perfect timing. It never wastes a shot."
+    },
+    {
+      "fighter": "draal",
+      "stage": "void",
+      "level": 10,
+      "stats": {
+        "hp": 600,
+        "ki": 160,
+        "atk": 125,
+        "def": 125
+      },
+      "maxForm": 2,
+      "ai": {
+        "melee": 0.6,
+        "meleeChain": 0.85,
+        "parry": 0.3,
+        "thinkMs": 250,
+        "dodge": 0.78,
+        "aggression": 0.85,
+        "blastCooldownMs": 450,
+        "chargeChance": 0.3,
+        "blockChance": 0.4,
+        "techChance": 0.7,
+        "clashRate": 11.5,
+        "counterBeam": 0.7
+      },
+      "deck": [
+        "energy_wave",
+        "final_burst",
+        "meteor_rush",
+        "explosive_aura",
+        "ground_seize",
+        "scatter_shot",
+        "rapid_barrage",
+        "afterimage",
+        "energy_charge"
+      ],
+      "queueSize": 3,
+      "rewards": [
+        "final_burst",
+        "power_ascension",
+        "energy_wave"
+      ],
+      "blurb": "The warlord at the top of the ladder. He transforms twice. Bring everything."
+    }
+  ],
+  "training": {
+    "fighter": "sparring",
+    "stage": "dojo",
+    "level": 1,
+    "stats": {
+      "hp": 500,
+      "ki": 100,
+      "atk": 50,
+      "def": 100
+    },
+    "maxForm": 2,
+    "ai": {
+      "melee": 0.35,
+      "meleeChain": 0.6,
+      "parry": 0.15,
+      "thinkMs": 700,
+      "dodge": 0.25,
+      "aggression": 0.4,
+      "blastCooldownMs": 1800,
+      "chargeChance": 0,
+      "blockChance": 0.1,
+      "techChance": 0.3,
+      "clashRate": 3.5,
+      "counterBeam": 0.6
+    },
+    "deck": [
+      "energy_wave",
+      "rapid_barrage"
+    ],
+    "queueSize": 1,
+    "rewards": [],
+    "blurb": "Practice freely. Health refills for both fighters and the Focus Gauge fills fast."
+  }
+}

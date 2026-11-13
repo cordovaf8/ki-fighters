@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const p=await b.newPage({viewport:{width:1100,height:800}});p.on('console',m=>console.log(m.type(),m.text()));p.on('pageerror',e=>console.log('ERROR',e.stack));await p.goto('file:///C:/Users/GLaptop/Desktop/dbz%20game/index.html');await p.waitForTimeout(2500);await p.locator('[data-act=menu]').click();await p.locator('[data-act=training]').click();await p.waitForTimeout(1200);await p.getByRole('button',{name:/Skip/}).click();await p.waitForTimeout(400);await p.screenshot({path:'sprite-check.png'});console.log(await p.locator('button').allTextContents());await b.close();})();
+

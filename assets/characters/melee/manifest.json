@@ -1,0 +1,830 @@
+[
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Base",
+    "file": "assets/characters/melee/jin-base.png",
+    "source": "assets/characters/jin/base-punch.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/jin-base-punchBack.png",
+    "source": "assets/characters/jin/form-0-punchBack-v2.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/jin-base-uppercut.png",
+    "source": "assets/characters/jin/form-0-uppercut.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Storm Awakened",
+    "file": "assets/characters/melee/jin-awakened.png",
+    "source": "assets/characters/jin/armor-01-punch.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Storm Awakened",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/jin-awakened-punchBack.png",
+    "source": "assets/characters/jin/form-1-punchBack-v2.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Storm Awakened",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/jin-awakened-uppercut.png",
+    "source": "assets/characters/jin/form-1-uppercut.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Tempest Ascended",
+    "file": "assets/characters/melee/jin-ascended.png",
+    "source": "assets/characters/jin/armor-02-punch.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Tempest Ascended",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/jin-ascended-punchBack.png",
+    "source": "assets/characters/jin/form-2-punchBack-v2.png"
+  },
+  {
+    "character": "jin",
+    "name": "Jin Arashi",
+    "form": "Tempest Ascended",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/jin-ascended-uppercut.png",
+    "source": "assets/characters/jin/form-2-uppercut.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Base",
+    "file": "assets/characters/melee/sparring-base.png",
+    "source": "assets/characters/sparring/base-punch.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/sparring-base-punchBack.png",
+    "source": "assets/characters/sparring/form-0-punchBack.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/sparring-base-uppercut.png",
+    "source": "assets/characters/sparring/form-0-uppercut.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Crimson Focus",
+    "file": "assets/characters/melee/sparring-crimson_focus.png",
+    "source": "assets/characters/sparring/form-1-punch.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Crimson Focus",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/sparring-crimson_focus-punchBack.png",
+    "source": "assets/characters/sparring/form-1-punchBack.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Crimson Focus",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/sparring-crimson_focus-uppercut.png",
+    "source": "assets/characters/sparring/form-1-uppercut.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Golden Grandmaster",
+    "file": "assets/characters/melee/sparring-golden_grandmaster.png",
+    "source": "assets/characters/sparring/form-2-punch.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Golden Grandmaster",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/sparring-golden_grandmaster-punchBack.png",
+    "source": "assets/characters/sparring/form-2-punchBack.png"
+  },
+  {
+    "character": "sparring",
+    "name": "Old Master Goro",
+    "form": "Golden Grandmaster",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/sparring-golden_grandmaster-uppercut.png",
+    "source": "assets/characters/sparring/form-2-uppercut.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Base",
+    "file": "assets/characters/melee/brakka-base.png",
+    "source": "assets/characters/brakka/base-punch.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/brakka-base-punchBack.png",
+    "source": "assets/characters/brakka/form-0-punchBack.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/brakka-base-uppercut.png",
+    "source": "assets/characters/brakka/form-0-uppercut.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Enraged",
+    "file": "assets/characters/melee/brakka-enraged.png",
+    "source": "assets/characters/brakka/form-1-punch-v2.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Enraged",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/brakka-enraged-punchBack.png",
+    "source": "assets/characters/brakka/form-1-punchBack.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Enraged",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/brakka-enraged-uppercut.png",
+    "source": "assets/characters/brakka/form-1-uppercut.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Canyon Titan",
+    "file": "assets/characters/melee/brakka-canyon_titan.png",
+    "source": "assets/characters/brakka/form-2-punch-v2.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Canyon Titan",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/brakka-canyon_titan-punchBack.png",
+    "source": "assets/characters/brakka/form-2-punchBack.png"
+  },
+  {
+    "character": "brakka",
+    "name": "Brakka",
+    "form": "Canyon Titan",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/brakka-canyon_titan-uppercut.png",
+    "source": "assets/characters/brakka/form-2-uppercut.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Base",
+    "file": "assets/characters/melee/selune-base.png",
+    "source": "assets/characters/selune/base-punch.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/selune-base-punchBack.png",
+    "source": "assets/characters/selune/form-0-punchBack.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/selune-base-uppercut.png",
+    "source": "assets/characters/selune/form-0-uppercut.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Lunar Veil",
+    "file": "assets/characters/melee/selune-veil.png",
+    "source": "assets/characters/selune/form-1-punch-v2.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Lunar Veil",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/selune-veil-punchBack.png",
+    "source": "assets/characters/selune/form-1-punchBack.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Lunar Veil",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/selune-veil-uppercut.png",
+    "source": "assets/characters/selune/form-1-uppercut.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Eclipse Sovereign",
+    "file": "assets/characters/melee/selune-eclipse_sovereign.png",
+    "source": "assets/characters/selune/form-2-punch-v2.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Eclipse Sovereign",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/selune-eclipse_sovereign-punchBack.png",
+    "source": "assets/characters/selune/form-2-punchBack.png"
+  },
+  {
+    "character": "selune",
+    "name": "Selune",
+    "form": "Eclipse Sovereign",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/selune-eclipse_sovereign-uppercut.png",
+    "source": "assets/characters/selune/form-2-uppercut.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Base",
+    "file": "assets/characters/melee/vorr-base.png",
+    "source": "assets/characters/vorr/base-punch.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/vorr-base-punchBack.png",
+    "source": "assets/characters/vorr/form-0-punchBack.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/vorr-base-uppercut.png",
+    "source": "assets/characters/vorr/form-0-uppercut.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Apex Predator",
+    "file": "assets/characters/melee/vorr-predator.png",
+    "source": "assets/characters/vorr/form-1-punch.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Apex Predator",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/vorr-predator-punchBack.png",
+    "source": "assets/characters/vorr/form-1-punchBack.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Apex Predator",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/vorr-predator-uppercut.png",
+    "source": "assets/characters/vorr/form-1-uppercut.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Star Devourer",
+    "file": "assets/characters/melee/vorr-star_devourer.png",
+    "source": "assets/characters/vorr/form-2-punch.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Star Devourer",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/vorr-star_devourer-punchBack.png",
+    "source": "assets/characters/vorr/form-2-punchBack.png"
+  },
+  {
+    "character": "vorr",
+    "name": "Vorr",
+    "form": "Star Devourer",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/vorr-star_devourer-uppercut.png",
+    "source": "assets/characters/vorr/form-2-uppercut.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Base",
+    "file": "assets/characters/melee/zeta-base.png",
+    "source": "assets/characters/zeta/base-punch.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/zeta-base-punchBack.png",
+    "source": "assets/characters/zeta/form-0-punchBack.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/zeta-base-uppercut.png",
+    "source": "assets/characters/zeta/form-0-uppercut.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Overclock",
+    "file": "assets/characters/melee/zeta-overclock.png",
+    "source": "assets/characters/zeta/form-1-punch-v2.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Overclock",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/zeta-overclock-punchBack.png",
+    "source": "assets/characters/zeta/form-1-punchBack.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Overclock",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/zeta-overclock-uppercut.png",
+    "source": "assets/characters/zeta/form-1-uppercut.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Omega Reactor",
+    "file": "assets/characters/melee/zeta-omega_reactor.png",
+    "source": "assets/characters/zeta/form-2-punch-v2.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Omega Reactor",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/zeta-omega_reactor-punchBack.png",
+    "source": "assets/characters/zeta/form-2-punchBack.png"
+  },
+  {
+    "character": "zeta",
+    "name": "ZETA-7",
+    "form": "Omega Reactor",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/zeta-omega_reactor-uppercut.png",
+    "source": "assets/characters/zeta/form-2-uppercut.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Base",
+    "file": "assets/characters/melee/draal-base.png",
+    "source": "assets/characters/draal/base-punch.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/draal-base-punchBack.png",
+    "source": "assets/characters/draal/form-0-punchBack-v2.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/draal-base-uppercut.png",
+    "source": "assets/characters/draal/form-0-uppercut.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Unbound",
+    "file": "assets/characters/melee/draal-unbound.png",
+    "source": "assets/characters/draal/form-1-punch.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Unbound",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/draal-unbound-punchBack.png",
+    "source": "assets/characters/draal/form-1-punchBack-v2.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Unbound",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/draal-unbound-uppercut.png",
+    "source": "assets/characters/draal/form-1-uppercut.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Calamity",
+    "file": "assets/characters/melee/draal-true_unbound.png",
+    "source": "assets/characters/draal/form-2-punch-v2.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Calamity",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/draal-true_unbound-punchBack.png",
+    "source": "assets/characters/draal/form-2-punchBack-v2.png"
+  },
+  {
+    "character": "draal",
+    "name": "Draal",
+    "form": "Calamity",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/draal-true_unbound-uppercut.png",
+    "source": "assets/characters/draal/form-2-uppercut.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Base",
+    "file": "assets/characters/melee/redhair-base.png",
+    "source": "assets/characters/redhair/form-0-punch.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redhair-base-punchBack.png",
+    "source": "assets/characters/redhair/form-0-punchBack.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redhair-base-uppercut.png",
+    "source": "assets/characters/redhair/form-0-uppercut.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Flame Awakened",
+    "file": "assets/characters/melee/redhair-flame_awakened.png",
+    "source": "assets/characters/redhair/form-1-punch.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Flame Awakened",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redhair-flame_awakened-punchBack.png",
+    "source": "assets/characters/redhair/form-1-punchBack.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Flame Awakened",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redhair-flame_awakened-uppercut.png",
+    "source": "assets/characters/redhair/form-1-uppercut.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Inferno Sovereign",
+    "file": "assets/characters/melee/redhair-inferno_sovereign.png",
+    "source": "assets/characters/redhair/form-2-punch-v2.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Inferno Sovereign",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redhair-inferno_sovereign-punchBack.png",
+    "source": "assets/characters/redhair/form-2-punchBack.png"
+  },
+  {
+    "character": "redhair",
+    "name": "Red-Haired Fighter",
+    "form": "Inferno Sovereign",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redhair-inferno_sovereign-uppercut.png",
+    "source": "assets/characters/redhair/form-2-uppercut.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Base",
+    "file": "assets/characters/melee/green-base.png",
+    "source": "assets/characters/green/form-0-punch.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/green-base-punchBack.png",
+    "source": "assets/characters/green/form-0-punchBack.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/green-base-uppercut.png",
+    "source": "assets/characters/green/form-0-uppercut.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Emerald Surge",
+    "file": "assets/characters/melee/green-emerald_surge.png",
+    "source": "assets/characters/green/form-1-punch.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Emerald Surge",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/green-emerald_surge-punchBack.png",
+    "source": "assets/characters/green/form-1-punchBack.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Emerald Surge",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/green-emerald_surge-uppercut.png",
+    "source": "assets/characters/green/form-1-uppercut.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Verdant Guardian",
+    "file": "assets/characters/melee/green-verdant_guardian.png",
+    "source": "assets/characters/green/form-2-punch.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Verdant Guardian",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/green-verdant_guardian-punchBack.png",
+    "source": "assets/characters/green/form-2-punchBack.png"
+  },
+  {
+    "character": "green",
+    "name": "Green Alien",
+    "form": "Verdant Guardian",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/green-verdant_guardian-uppercut.png",
+    "source": "assets/characters/green/form-2-uppercut.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Base",
+    "file": "assets/characters/melee/redgi-base.png",
+    "source": "assets/characters/redgi/form-0-punch.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redgi-base-punchBack.png",
+    "source": "assets/characters/redgi/form-0-punchBack-v2.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redgi-base-uppercut.png",
+    "source": "assets/characters/redgi/form-0-uppercut.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Crimson Rush",
+    "file": "assets/characters/melee/redgi-crimson_rush.png",
+    "source": "assets/characters/redgi/form-1-punch.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Crimson Rush",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redgi-crimson_rush-punchBack.png",
+    "source": "assets/characters/redgi/form-1-punchBack-v2.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Crimson Rush",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redgi-crimson_rush-uppercut.png",
+    "source": "assets/characters/redgi/form-1-uppercut.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Scarlet Dragon",
+    "file": "assets/characters/melee/redgi-scarlet_dragon.png",
+    "source": "assets/characters/redgi/form-2-punch.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Scarlet Dragon",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/redgi-scarlet_dragon-punchBack.png",
+    "source": "assets/characters/redgi/form-2-punchBack-v2.png"
+  },
+  {
+    "character": "redgi",
+    "name": "Crimson Fighter",
+    "form": "Scarlet Dragon",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/redgi-scarlet_dragon-uppercut.png",
+    "source": "assets/characters/redgi/form-2-uppercut.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Base",
+    "file": "assets/characters/melee/gold-base.png",
+    "source": "assets/characters/gold/form-0-punch.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/gold-base-punchBack.png",
+    "source": "assets/characters/gold/form-0-punchBack.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/gold-base-uppercut.png",
+    "source": "assets/characters/gold/form-0-uppercut.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Radiant Valor",
+    "file": "assets/characters/melee/gold-radiant_valor.png",
+    "source": "assets/characters/gold/form-1-punch.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Radiant Valor",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/gold-radiant_valor-punchBack.png",
+    "source": "assets/characters/gold/form-1-punchBack.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Radiant Valor",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/gold-radiant_valor-uppercut.png",
+    "source": "assets/characters/gold/form-1-uppercut.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Solar Empress",
+    "file": "assets/characters/melee/gold-solar_empress.png",
+    "source": "assets/characters/gold/form-2-punch.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Solar Empress",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/gold-solar_empress-punchBack.png",
+    "source": "assets/characters/gold/form-2-punchBack.png"
+  },
+  {
+    "character": "gold",
+    "name": "Golden Fighter",
+    "form": "Solar Empress",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/gold-solar_empress-uppercut.png",
+    "source": "assets/characters/gold/form-2-uppercut.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Base",
+    "file": "assets/characters/melee/mage-base.png",
+    "source": "assets/characters/mage/form-0-punch.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Base",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/mage-base-punchBack.png",
+    "source": "assets/characters/mage/form-0-punchBack.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Base",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/mage-base-uppercut.png",
+    "source": "assets/characters/mage/form-0-uppercut.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Arcane Resonance",
+    "file": "assets/characters/melee/mage-arcane_resonance.png",
+    "source": "assets/characters/mage/form-1-punch.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Arcane Resonance",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/mage-arcane_resonance-punchBack.png",
+    "source": "assets/characters/mage/form-1-punchBack.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Arcane Resonance",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/mage-arcane_resonance-uppercut.png",
+    "source": "assets/characters/mage/form-1-uppercut.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Astral Archmage",
+    "file": "assets/characters/melee/mage-astral_archmage.png",
+    "source": "assets/characters/mage/form-2-punch.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Astral Archmage",
+    "pose": "punchBack",
+    "file": "assets/characters/melee/mage-astral_archmage-punchBack.png",
+    "source": "assets/characters/mage/form-2-punchBack.png"
+  },
+  {
+    "character": "mage",
+    "name": "Ki Mage",
+    "form": "Astral Archmage",
+    "pose": "uppercut",
+    "file": "assets/characters/melee/mage-astral_archmage-uppercut.png",
+    "source": "assets/characters/mage/form-2-uppercut.png"
+  }
+]

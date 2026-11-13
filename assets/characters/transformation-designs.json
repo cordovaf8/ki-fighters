@@ -1,0 +1,150 @@
+{
+  "generator": "Built-in image_gen",
+  "layout": "5 columns x 4 rows; first 2 rows form 1, last 2 rows form 2",
+  "poses": [
+    "idle0",
+    "idle1",
+    "shoot",
+    "charge",
+    "beam",
+    "punch",
+    "hurt",
+    "block",
+    "power",
+    "special"
+  ],
+  "themes": {
+    "sparring": [
+      [
+        "crimson_focus",
+        "Crimson Focus",
+        "#ff5269"
+      ],
+      [
+        "golden_grandmaster",
+        "Golden Grandmaster",
+        "#ffe176"
+      ]
+    ],
+    "brakka": [
+      [
+        "enraged",
+        "Enraged",
+        "#ff5a3c"
+      ],
+      [
+        "canyon_titan",
+        "Canyon Titan",
+        "#ffad38"
+      ]
+    ],
+    "selune": [
+      [
+        "veil",
+        "Lunar Veil",
+        "#b9a0ff"
+      ],
+      [
+        "eclipse_sovereign",
+        "Eclipse Sovereign",
+        "#e3d0ff"
+      ]
+    ],
+    "vorr": [
+      [
+        "predator",
+        "Apex Predator",
+        "#b6ff5a"
+      ],
+      [
+        "star_devourer",
+        "Star Devourer",
+        "#d9ff60"
+      ]
+    ],
+    "zeta": [
+      [
+        "overclock",
+        "Overclock",
+        "#ff4060"
+      ],
+      [
+        "omega_reactor",
+        "Omega Reactor",
+        "#ff6688"
+      ]
+    ],
+    "draal": [
+      [
+        "unbound",
+        "Unbound",
+        "#ff4fa0"
+      ],
+      [
+        "true_unbound",
+        "Calamity",
+        "#ffb7ef"
+      ]
+    ],
+    "redhair": [
+      [
+        "flame_awakened",
+        "Flame Awakened",
+        "#ff9445"
+      ],
+      [
+        "inferno_sovereign",
+        "Inferno Sovereign",
+        "#ffcf60"
+      ]
+    ],
+    "green": [
+      [
+        "emerald_surge",
+        "Emerald Surge",
+        "#62ff8a"
+      ],
+      [
+        "verdant_guardian",
+        "Verdant Guardian",
+        "#bbff74"
+      ]
+    ],
+    "redgi": [
+      [
+        "crimson_rush",
+        "Crimson Rush",
+        "#ff537c"
+      ],
+      [
+        "scarlet_dragon",
+        "Scarlet Dragon",
+        "#ff9a7c"
+      ]
+    ],
+    "gold": [
+      [
+        "radiant_valor",
+        "Radiant Valor",
+        "#ffe176"
+      ],
+      [
+        "solar_empress",
+        "Solar Empress",
+        "#fff0a8"
+      ]
+    ],
+    "mage": [
+      [
+        "arcane_resonance",
+        "Arcane Resonance",
+        "#73dcff"
+      ],
+      [
+        "astral_archmage",
+        "Astral Archmage",
+        "#b9eaff"
+      ]
+    ]
+  }
+}

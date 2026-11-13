@@ -1,0 +1,13 @@
+import block0 from "../../assets/characters/blocks/01-jin.png";
+import block1 from "../../assets/characters/blocks/02-ponytail.png";
+import block2 from "../../assets/characters/blocks/03-alien.png";
+import block3 from "../../assets/characters/blocks/04-redhair.png";
+import block4 from "../../assets/characters/blocks/05-android.png";
+import block5 from "../../assets/characters/blocks/06-brawler.png";
+import block6 from "../../assets/characters/blocks/07-lunar.png";
+import block7 from "../../assets/characters/blocks/08-green.png";
+import block8 from "../../assets/characters/blocks/09-redgi.png";
+import block9 from "../../assets/characters/blocks/10-gold.png";
+import block10 from "../../assets/characters/blocks/11-beast.png";
+import block11 from "../../assets/characters/blocks/12-mage.png";
+export const blockImages = [block0,block1,block2,block3,block4,block5,block6,block7,block8,block9,block10,block11];

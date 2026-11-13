@@ -1,0 +1,88 @@
+{
+  "schools": {
+    "ki": { "name": "Ki", "color": "#4fd8ff" },
+    "body": { "name": "Body", "color": "#ff9040" },
+    "spirit": { "name": "Spirit", "color": "#b98cff" }
+  },
+  "techniques": {
+    "rapid_barrage": {
+      "name": "Rapid Barrage", "type": "Energy", "school": "ki", "kiCost": 0, "power": "12 x5",
+      "desc": "Fire five rapid Ki blasts down your row.",
+      "effect": "projectiles", "params": { "rows": "self", "count": 5, "intervalMs": 90, "damage": 12 }
+    },
+    "scatter_shot": {
+      "name": "Scatter Shot", "type": "Energy", "school": "ki", "kiCost": 5, "power": "28",
+      "desc": "Launch one heavy blast down every row at once.",
+      "effect": "projectiles", "params": { "rows": "all", "count": 1, "intervalMs": 0, "damage": 28, "big": true, "heavy": true }
+    },
+    "energy_wave": {
+      "name": "Energy Wave", "type": "Special", "school": "ki", "kiCost": 20, "power": "80",
+      "desc": "Charge, then fire a beam across your whole row. Can clash with enemy beams.",
+      "effect": "beam", "params": { "rows": "self", "chargeMs": 650, "durationMs": 500, "damage": 80 }
+    },
+    "final_burst": {
+      "name": "Final Burst", "type": "Ultimate", "school": "ki", "kiCost": 45, "power": "150",
+      "desc": "A colossal beam that engulfs your row and the rows beside it.",
+      "effect": "beam", "params": { "rows": "wide", "chargeMs": 1100, "durationMs": 800, "damage": 150, "crack": true }
+    },
+    "meteor_rush": {
+      "name": "Meteor Rush", "type": "Melee", "school": "body", "kiCost": 10, "power": "14 x4",
+      "desc": "Vanish to the enemy's tile for a four-hit combo that knocks them back.",
+      "effect": "rush", "params": { "windupMs": 320, "hits": 4, "damage": 14, "knockback": 1 }
+    },
+    "explosive_aura": {
+      "name": "Explosive Aura", "type": "Area", "school": "body", "kiCost": 15, "power": "55",
+      "desc": "Detonate a 3x3 blast centred three tiles ahead. Cracks the ground.",
+      "effect": "area", "params": { "ahead": 3, "radius": 1, "delayMs": 450, "damage": 55, "crack": true }
+    },
+    "ground_seize": {
+      "name": "Ground Seize", "type": "Area", "school": "body", "kiCost": 10, "power": "-",
+      "desc": "Capture the enemy's front column for a while, shrinking their territory.",
+      "effect": "capture", "params": { "durationMs": 14000 }
+    },
+    "afterimage": {
+      "name": "Afterimage", "type": "Defense", "school": "spirit", "kiCost": 5, "power": "-",
+      "desc": "For 6 seconds, automatically vanish away from the next attack that would hit you.",
+      "effect": "counter", "params": { "durationMs": 6000 }
+    },
+    "energy_charge": {
+      "name": "Energy Charge", "type": "Support", "school": "spirit", "kiCost": 0, "power": "+60 Ki",
+      "desc": "Focus briefly to restore 60 Ki. A heavy hit interrupts it.",
+      "effect": "restoreKi", "params": { "amount": 60, "chargeMs": 500 }
+    },
+    "power_ascension": {
+      "name": "Power Ascension", "type": "Transformation", "school": "spirit", "kiCost": 0, "power": "Form +1",
+      "desc": "Rise to your next form for free, with no Ki drain for 10 seconds.",
+      "effect": "ascend", "params": { "freeMs": 10000, "fallbackKi": 40 }
+    }
+  },
+  "combos": [
+    {
+      "id": "triple_energy_barrage", "name": "Triple Energy Barrage", "type": "Combo", "school": "ki", "kiCost": 10, "power": "12 x18",
+      "desc": "Three Energy techniques fuse into a storm of blasts across every row.",
+      "recipe": { "type": "Energy", "count": 3 },
+      "effect": "projectiles", "params": { "rows": "all", "count": 6, "intervalMs": 80, "damage": 12 }
+    },
+    {
+      "id": "twin_surge_wave", "name": "Twin Surge Wave", "type": "Combo", "school": "ki", "kiCost": 35, "power": "120",
+      "desc": "Two Energy Waves merge into a wide beam covering neighbouring rows.",
+      "recipe": { "ids": ["energy_wave", "energy_wave"] },
+      "effect": "beam", "params": { "rows": "wide", "chargeMs": 700, "durationMs": 650, "damage": 120 }
+    },
+    {
+      "id": "comet_breaker", "name": "Comet Breaker", "type": "Combo", "school": "body", "kiCost": 20, "power": "14 x5 + 60",
+      "desc": "Meteor Rush ends in an explosion that shatters the ground around the target.",
+      "recipe": { "ids": ["meteor_rush", "explosive_aura"] },
+      "effect": "rush", "params": { "windupMs": 300, "hits": 5, "damage": 14, "knockback": 1, "finisher": { "radius": 1, "damage": 60, "crack": true } }
+    }
+  ],
+  "starterDeck": [
+    "rapid_barrage", "rapid_barrage", "rapid_barrage",
+    "scatter_shot", "scatter_shot",
+    "energy_wave", "energy_wave",
+    "meteor_rush", "meteor_rush", "meteor_rush",
+    "explosive_aura", "explosive_aura",
+    "afterimage", "afterimage",
+    "energy_charge", "energy_charge"
+  ]
+}

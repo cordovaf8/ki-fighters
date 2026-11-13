@@ -1,0 +1,13 @@
+# Dependencies (restore with: npm install)
+node_modules/
+
+# Throwaway test bundles written by the *-runtime-check scripts
+*-runtime.js
+
+# Local tool settings
+.claude/settings.local.json
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

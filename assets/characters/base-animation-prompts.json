@@ -1,0 +1,14 @@
+{
+  "generator": "Built-in image_gen",
+  "sharedPrompt": "Create a production BASE-FORM combat animation sprite sheet for this EXACT reference character. Precisely FIVE columns and TWO rows, TEN equal cells. Transparent background, no text, labels, grid lines, scenery, aura, shadows outside body or projectiles. Each cell contains one COMPLETE full-body character with generous transparent margins; no clipping hair, tail or feet and no crossing cell boundaries. Match reference anime pixel-edged illustration, colors, body proportions, clothing and facial identity. ALL face RIGHT in three-quarter view. Keep base appearance throughout; NO transformation or added armor. Ten poses in strict reading order: row1: idle fighting guard; alternate breathing idle with bent knees and shifted arms; basic shot one open palm extended right other hand at waist; charged shot same forward palm braced with rear arm drawn back and torso lowered; beam both cupped hands extended right in powerful forward lean. Row2: straight punch with fully extended FIST right; hurt recoil leaning back arms loosened; crossed-forearms BLOCK protecting face; POWER-UP fists at hips legs braced mouth open; SPECIAL deep wide stance cupped hands together aimed right. Each action should look clearly different, not copies of idle. Exactly two arms and two legs. Preserve full reference base costume in ALL cells. ",
+  "references": {
+    "jin": "roster/01-jin.png",
+    "sparring": "roster/02-ponytail.png",
+    "brakka": "roster/06-brawler.png",
+    "selune": "roster/07-lunar.png",
+    "vorr": "roster/03-alien.png",
+    "zeta": "roster/05-android.png",
+    "draal": "roster/11-beast.png"
+  },
+  "assetPaths": "Each character folder contains base-poses.png and base-<pose>.png. Existing five restored bases use form-0-<pose>.png."
+}

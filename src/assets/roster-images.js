@@ -1,0 +1,13 @@
+import sprite0 from "../../assets/characters/roster/01-jin.png";
+import sprite1 from "../../assets/characters/roster/02-ponytail.png";
+import sprite2 from "../../assets/characters/roster/03-alien.png";
+import sprite3 from "../../assets/characters/roster/04-redhair.png";
+import sprite4 from "../../assets/characters/roster/05-android.png";
+import sprite5 from "../../assets/characters/roster/06-brawler.png";
+import sprite6 from "../../assets/characters/roster/07-lunar.png";
+import sprite7 from "../../assets/characters/roster/08-green.png";
+import sprite8 from "../../assets/characters/roster/09-redgi.png";
+import sprite9 from "../../assets/characters/roster/10-gold.png";
+import sprite10 from "../../assets/characters/roster/11-beast.png";
+import sprite11 from "../../assets/characters/roster/12-mage.png";
+export const rosterImages = [sprite0,sprite1,sprite2,sprite3,sprite4,sprite5,sprite6,sprite7,sprite8,sprite9,sprite10,sprite11];

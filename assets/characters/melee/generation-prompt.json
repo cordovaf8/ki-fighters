@@ -1,0 +1,6 @@
+{
+  "generator": "Built-in image_gen",
+  "newAsset": "../jin/armor-01-punch.png",
+  "prompt": "Create ONE full-body right-facing melee PUNCH sprite of Jin in his FIRST armor transformation using this image as exact character/costume reference. Match anime pixel-edged game illustration. Strong straight punch to the RIGHT: front arm extended horizontally with a CLOSED FIST at chest height, rear closed fist pulled back to ribs, torso twisted into strike, knees bent, feet braced. Preserve short spiky brown hair and visible face, gunmetal/cobalt chest and shoulder plates, cyan glowing seams and chest core, exposed tan upper arms and hands, blue waist sash, dark cloth trousers, shin guards and blue/white boots. NOT full helmet armor. Exactly two arms and two legs, realistic fist anatomy. Entire character from hair to boots with clear transparent margin including fist, no clipping. True transparent background. No aura, ki orb, projectile, impact star, text or shadows outside body.",
+  "existingAssets": "Other 35 poses retained from the existing base and transformation sprite sheets; see manifest.json for each source."
+}

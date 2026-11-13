@@ -1,0 +1,18 @@
+{
+  "generator": "Built-in image_gen",
+  "sharedPrompt": "Create a game sprite sheet of EXACTLY FOUR complete full-body PUNCH poses in a TWO-COLUMN TWO-ROW equal grid. Each reference image corresponds to one cell in reading order. Match each reference identity, costume, colors, anime pixel-edged illustration, but REPAIR the cropped fist: extend the punching arm to the RIGHT with a clear CLOSED FIST, rear fist at ribs, knees braced. Entire character including fist, hair, tail, cape, and boots must fit inside CENTRAL 65% of its cell's width and 75% height. Generous truly transparent padding on EVERY side, no crossing cell boundaries. No aura, no external glow, no text, grid lines or projectiles. Do not copy cropping from references! Four separate characters, each same proportions and costume as its corresponding input, two arms/two legs.",
+  "batches": [
+    [
+      "Brakka Enraged",
+      "Brakka Canyon Titan",
+      "Selune Lunar Veil",
+      "Selune Eclipse Sovereign"
+    ],
+    [
+      "ZETA Overclock",
+      "ZETA Omega",
+      "Draal Calamity",
+      "Flame fighter Inferno Sovereign"
+    ]
+  ]
+}

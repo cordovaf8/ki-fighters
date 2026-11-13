@@ -1,0 +1,997 @@
+{
+  "jin": {
+    "name": "Jin Arashi",
+    "title": "Storm Fist",
+    "archetype": "Martial Artist",
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#7fe8ff"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "note": "Standard Ki attacks",
+        "spriteSet": "jin-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "awakened",
+        "name": "Storm Awakened",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#7fe8ff",
+        "look": {
+          "hair": "#a6f7ea",
+          "eye": "#12a898"
+        },
+        "perks": [
+          "blastBoost"
+        ],
+        "note": "Enhanced Ki blasts",
+        "spriteSet": "jin-armor-01",
+        "auraStyle": "jin-storm",
+        "spriteScale": 1.03
+      },
+      {
+        "id": "ascended",
+        "name": "Tempest Ascended",
+        "atk": 1.5,
+        "speed": 1.25,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 2,
+        "aura": "#7fe8ff",
+        "look": {
+          "hair": "#cdb6ff",
+          "eye": "#6a3cff"
+        },
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "note": "Charged attack unleashes a lightning beam",
+        "spriteSet": "jin-armor-02",
+        "auraStyle": "jin-storm",
+        "poseSprites": true,
+        "auraScale": 1.65,
+        "chargedAttack": "beam",
+        "spriteScale": 1.06
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "sparring": {
+    "name": "Old Master Goro",
+    "title": "Sparring Partner",
+    "archetype": "Trainer",
+    "look": {
+      "skin": "#e0b088",
+      "hair": "#e8e8ee",
+      "hairStyle": "bald",
+      "gi": "#8a5a2c",
+      "giDark": "#64401e",
+      "pants": "#3a3a44",
+      "trim": "#f0e0b0",
+      "boots": "#2a2030",
+      "ki": "#ffe9a0"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "sparring-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "crimson_focus",
+        "name": "Crimson Focus",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#ff5269",
+        "perks": [
+          "blastBoost"
+        ],
+        "spriteSet": "sparring-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "golden_grandmaster",
+        "name": "Golden Grandmaster",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#ffe176",
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "sparring-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "brakka": {
+    "name": "Brakka",
+    "title": "Canyon Brawler",
+    "archetype": "Brawler",
+    "look": {
+      "skin": "#c98f5e",
+      "hair": "#2a1a12",
+      "hairStyle": "bald",
+      "gi": "#4d7a3a",
+      "giDark": "#36582a",
+      "pants": "#6b5a3a",
+      "trim": "#2a2a2a",
+      "boots": "#3a2a20",
+      "ki": "#ffb347"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "brakka-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "enraged",
+        "name": "Enraged",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#ff5a3c",
+        "look": {
+          "skin": "#dd7a5c",
+          "eye": "#ffffff"
+        },
+        "perks": [
+          "blastBoost"
+        ],
+        "spriteSet": "brakka-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "canyon_titan",
+        "name": "Canyon Titan",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#ffad38",
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "brakka-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "selune": {
+    "name": "Selune",
+    "title": "Moonlight Adept",
+    "archetype": "Energy Specialist",
+    "look": {
+      "skin": "#f6dcc8",
+      "hair": "#b9aef5",
+      "hairStyle": "long",
+      "sleeves": true,
+      "gi": "#f0f0fa",
+      "giDark": "#c4c4dc",
+      "pants": "#5a4a9a",
+      "trim": "#7a5cff",
+      "boots": "#4a3a7a",
+      "ki": "#c59bff"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "selune-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "veil",
+        "name": "Lunar Veil",
+        "atk": 1.25,
+        "speed": 1.15,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#b9a0ff",
+        "look": {
+          "hair": "#ffffff",
+          "eye": "#7a5cff"
+        },
+        "perks": [
+          "blastBoost"
+        ],
+        "spriteSet": "selune-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "eclipse_sovereign",
+        "name": "Eclipse Sovereign",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#e3d0ff",
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "selune-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "vorr": {
+    "name": "Vorr",
+    "title": "Star Raider",
+    "archetype": "Alien Warrior",
+    "look": {
+      "skin": "#6fc28a",
+      "hair": "#e8d850",
+      "hairStyle": "fin",
+      "gi": "#3a2a5a",
+      "giDark": "#281c40",
+      "pants": "#2a2040",
+      "armor": "#6a4a9e",
+      "trim": "#e8c040",
+      "boots": "#e8e0d0",
+      "ki": "#b6ff5a"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "vorr-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "predator",
+        "name": "Apex Predator",
+        "atk": 1.3,
+        "speed": 1.2,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#b6ff5a",
+        "look": {
+          "skin": "#9be8a8",
+          "eye": "#ff3040"
+        },
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "vorr-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "star_devourer",
+        "name": "Star Devourer",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#d9ff60",
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "vorr-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "zeta": {
+    "name": "ZETA-7",
+    "title": "Combat Android",
+    "archetype": "Android",
+    "look": {
+      "skin": "#c8ccd6",
+      "hair": "#3a4458",
+      "hairStyle": "helmet",
+      "visor": "#5af0ff",
+      "sleeves": true,
+      "gi": "#2c3444",
+      "giDark": "#1e2430",
+      "pants": "#2c3444",
+      "armor": "#59657e",
+      "trim": "#ff4060",
+      "boots": "#59657e",
+      "ki": "#5af0ff"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "zeta-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "overclock",
+        "name": "Overclock",
+        "atk": 1.35,
+        "speed": 1.25,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#ff4060",
+        "look": {
+          "visor": "#ff4060"
+        },
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "zeta-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "omega_reactor",
+        "name": "Omega Reactor",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#ff6688",
+        "perks": [
+          "blastBoost",
+          "fastTeleport"
+        ],
+        "spriteSet": "zeta-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "draal": {
+    "name": "Draal",
+    "title": "The Unbound",
+    "archetype": "Warlord",
+    "look": {
+      "skin": "#8a7aa6",
+      "hair": "#f0eef8",
+      "hairStyle": "horns",
+      "horn": "#e8d9b0",
+      "sleeves": true,
+      "gi": "#1c1626",
+      "giDark": "#120e1a",
+      "pants": "#1c1626",
+      "armor": "#4a3462",
+      "cape": "#6a1238",
+      "trim": "#c02050",
+      "boots": "#3a2a4a",
+      "ki": "#ff4fa0",
+      "eye": "#ff3050"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "draal-base",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "unbound",
+        "name": "Unbound",
+        "atk": 1.3,
+        "speed": 1.2,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "aura": "#ff4fa0",
+        "look": {
+          "hair": "#ffc0dc",
+          "eye": "#ffffff"
+        },
+        "perks": [
+          "blastBoost"
+        ],
+        "spriteSet": "draal-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "true_unbound",
+        "name": "Calamity",
+        "atk": 1.6,
+        "speed": 1.35,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "aura": "#ffb7ef",
+        "look": {
+          "hair": "#ffffff",
+          "skin": "#a898c8",
+          "eye": "#ffffff"
+        },
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "spriteSet": "draal-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "playable": true,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "redhair": {
+    "name": "Red-Haired Fighter",
+    "title": "Flame Warrior",
+    "archetype": "Flame Warrior",
+    "playable": true,
+    "rosterCell": 3,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#ff6545"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "redhair-form-0",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "flame_awakened",
+        "name": "Flame Awakened",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost"
+        ],
+        "aura": "#ff9445",
+        "spriteSet": "redhair-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "inferno_sovereign",
+        "name": "Inferno Sovereign",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "aura": "#ffcf60",
+        "spriteSet": "redhair-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "green": {
+    "name": "Green Alien",
+    "title": "Emerald Warrior",
+    "archetype": "Emerald Warrior",
+    "playable": true,
+    "rosterCell": 7,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#63ff87"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "green-form-0",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "emerald_surge",
+        "name": "Emerald Surge",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost"
+        ],
+        "aura": "#62ff8a",
+        "spriteSet": "green-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "verdant_guardian",
+        "name": "Verdant Guardian",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "aura": "#bbff74",
+        "spriteSet": "green-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "redgi": {
+    "name": "Crimson Fighter",
+    "title": "Crimson Martial Artist",
+    "archetype": "Crimson Martial Artist",
+    "playable": true,
+    "rosterCell": 8,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#ff6578"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "redgi-form-0",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "crimson_rush",
+        "name": "Crimson Rush",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost"
+        ],
+        "aura": "#ff537c",
+        "spriteSet": "redgi-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "scarlet_dragon",
+        "name": "Scarlet Dragon",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "aura": "#ff9a7c",
+        "spriteSet": "redgi-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "gold": {
+    "name": "Golden Fighter",
+    "title": "Golden Warrior",
+    "archetype": "Golden Warrior",
+    "playable": true,
+    "rosterCell": 9,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#ffe477"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "gold-form-0",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "radiant_valor",
+        "name": "Radiant Valor",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost"
+        ],
+        "aura": "#ffe176",
+        "spriteSet": "gold-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "solar_empress",
+        "name": "Solar Empress",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "aura": "#fff0a8",
+        "spriteSet": "gold-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  },
+  "mage": {
+    "name": "Ki Mage",
+    "title": "Energy Adept",
+    "archetype": "Energy Adept",
+    "playable": true,
+    "rosterCell": 11,
+    "stats": {
+      "hp": 300,
+      "ki": 100,
+      "atk": 100,
+      "def": 100
+    },
+    "look": {
+      "skin": "#f0c49a",
+      "hair": "#4a2f1c",
+      "hairStyle": "spiky",
+      "gi": "#2b4a9e",
+      "giDark": "#1c3270",
+      "pants": "#2b4a9e",
+      "trim": "#d8423a",
+      "boots": "#2a2030",
+      "ki": "#72ceff"
+    },
+    "forms": [
+      {
+        "id": "base",
+        "name": "Base",
+        "atk": 1,
+        "speed": 1,
+        "kiCost": 0,
+        "drain": 0,
+        "unlockWins": 0,
+        "perks": [],
+        "spriteSet": "mage-form-0",
+        "poseSprites": true,
+        "spriteScale": 1
+      },
+      {
+        "id": "arcane_resonance",
+        "name": "Arcane Resonance",
+        "atk": 1.25,
+        "speed": 1.1,
+        "kiCost": 25,
+        "drain": 3,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost"
+        ],
+        "aura": "#73dcff",
+        "spriteSet": "mage-form-1",
+        "poseSprites": true,
+        "spriteScale": 1.03,
+        "auraScale": 1.1
+      },
+      {
+        "id": "astral_archmage",
+        "name": "Astral Archmage",
+        "atk": 1.6,
+        "speed": 1.3,
+        "kiCost": 35,
+        "drain": 5,
+        "unlockWins": 0,
+        "perks": [
+          "blastBoost",
+          "fastTeleport",
+          "chargedBeam"
+        ],
+        "aura": "#b9eaff",
+        "spriteSet": "mage-form-2",
+        "poseSprites": true,
+        "spriteScale": 1.06,
+        "auraScale": 1.5
+      }
+    ],
+    "meleePoses": [
+      "punch",
+      "punchBack",
+      "uppercut"
+    ]
+  }
+}
