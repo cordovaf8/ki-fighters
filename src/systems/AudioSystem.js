@@ -1,6 +1,13 @@
+import { VOICES, defeatVoice } from './CharacterVoices.js';
 // AudioSystem: all music and combat sounds are synthesised with the Web Audio
 // API, so no audio files are required.
 const SFX = {
+  charge: a => { a.tone({type:'sine',freq:180,to:700,dur:.19,vol:.065});a.noise({dur:.16,vol:.035,freq:1700}); },
+  guard: a => a.tone({type:'triangle',freq:320,to:650,dur:.065,vol:.08}),
+  guardbreak: a => { a.noise({dur:.27,vol:.23,freq:4200});a.tone({freq:440,to:55,dur:.3,vol:.13}); },
+  swing: a => a.noise({dur:.09,vol:.09,freq:2700}),
+  uppercut: a => { a.noise({dur:.16,vol:.14,freq:1600});a.tone({type:'triangle',freq:150,to:600,dur:.12,vol:.08}); },
+  technique: a => { a.tone({type:'triangle',freq:460,to:1500,dur:.16,vol:.1}); },
   blast: (a) => a.tone({ type: 'square', freq: 880, to: 300, dur: 0.09, vol: 0.12 }),
   bigblast: (a) => { a.tone({ type: 'sawtooth', freq: 520, to: 110, dur: 0.28, vol: 0.2 }); a.noise({ dur: 0.2, vol: 0.14, freq: 2400 }); },
   charged: (a) => a.tone({ type: 'triangle', freq: 300, to: 1200, dur: 0.18, vol: 0.14 }),
@@ -25,7 +32,7 @@ const SFX = {
   confirm: (a) => { a.tone({ type: 'square', freq: 660, dur: 0.06, vol: 0.1 }); a.tone({ type: 'square', freq: 990, dur: 0.1, vol: 0.1, delay: 0.06 }); },
   deny: (a) => a.tone({ type: 'square', freq: 160, to: 120, dur: 0.12, vol: 0.12 }),
   ready: (a) => { a.tone({ type: 'triangle', freq: 784, dur: 0.08, vol: 0.14 }); a.tone({ type: 'triangle', freq: 1175, dur: 0.14, vol: 0.14, delay: 0.08 }); },
-  ko: (a) => { a.noise({ dur: 0.8, vol: 0.4, freq: 600 }); a.tone({ type: 'sine', freq: 200, to: 30, dur: 0.9, vol: 0.5 }); },
+  ko: (a) => { a.noise({ dur: 0.5, vol: 0.09, freq: 600 }); a.tone({ type: 'sine', freq: 200, to: 30, dur: 0.6, vol: 0.14 }); },
   win: (a) => { [523, 659, 784, 1047, 1319].forEach((f, i) => a.tone({ type: 'square', freq: f, dur: 0.18, vol: 0.12, delay: i * 0.12 })); },
   lose: (a) => { [392, 330, 262, 196].forEach((f, i) => a.tone({ type: 'triangle', freq: f, dur: 0.26, vol: 0.16, delay: i * 0.2 })); },
 };
@@ -34,7 +41,7 @@ export class AudioSystem {
   constructor(settings) {
     this.settings = settings;
     this.ctx = null;
-    this.musicTimer = null;
+    this.musicLayer = null;
   }
 
   /** Browsers only allow audio after a user gesture; call this from a click. */
@@ -101,34 +108,54 @@ export class AudioSystem {
     src.stop(t + o.dur + 0.02);
   }
 
-  play(name) {
-    if (this.ctx && SFX[name]) SFX[name](this);
+  play(name, fighter) {
+    if (!this.ctx) return;
+    const id = typeof fighter === 'string' ? fighter : fighter?.id;
+    if (name === 'defeat') { defeatVoice(this, id); return; }
+    if (!SFX[name]) return;
+    // Tune energy attacks to their owner's voice without changing UI pitches.
+    const themed = id && ['blast','bigblast','beam','beamcharge','charge','transform','technique'].includes(name);
+    const ratio = themed ? Math.max(.7, Math.min(1.45, (VOICES[id]?.pitch || 155) / 155)) : 1;
+    const emitter = Object.create(this);
+    emitter.tone = o => this.tone({...o, freq:o.freq*ratio, to:o.to ? o.to*ratio : undefined});
+    SFX[name](emitter);
   }
 
-  /** A looping battle theme from a 16-step sequencer. */
+  /** A steady low ambient bed, with a soft entrance and no percussive pulse. */
   startMusic() {
-    if (!this.ctx || this.musicTimer) return;
-    const stepLen = 60 / 150 / 2;
-    const bass = [55, 55, 65.41, 55, 73.42, 55, 82.41, 65.41];
-    const lead = [440, 523.25, 659.25, 523.25, 587.33, 659.25, 783.99, 659.25, 440, 523.25, 659.25, 880, 783.99, 659.25, 587.33, 523.25];
-    let step = 0;
-    let next = this.ctx.currentTime + 0.1;
-    this.musicTimer = setInterval(() => {
-      while (next < this.ctx.currentTime + 0.25) {
-        const delay = Math.max(0, next - this.ctx.currentTime);
-        const bus = this.musicBus;
-        this.tone({ type: 'sawtooth', freq: bass[(step >> 1) % 8] * 2, dur: stepLen * 0.9, vol: 0.1, delay, bus });
-        if (step % 2 === 0 || step % 8 === 7) this.tone({ type: 'square', freq: lead[step % 16], dur: stepLen * 0.8, vol: 0.05, delay, bus });
-        if (step % 4 === 0) this.tone({ type: 'sine', freq: 120, to: 40, dur: 0.12, vol: 0.3, delay, bus });
-        if (step % 4 === 2) this.noise({ dur: 0.05, vol: 0.1, freq: 6000, delay, bus });
-        step++;
-        next += stepLen;
-      }
-    }, 80);
+    if (!this.ctx || this.musicLayer) return;
+    const c = this.ctx, now = c.currentTime;
+    const gain = c.createGain();
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(1, now + 1.5);
+    gain.connect(this.musicBus);
+    const voices = [
+      [55, .075], [82.41, .035], [110, .025], [130.81, .018],
+    ].map(([freq, volume]) => {
+      const osc = c.createOscillator(), level = c.createGain();
+      osc.type = 'sine'; osc.frequency.value = freq;
+      level.gain.value = volume;
+      osc.connect(level).connect(gain); osc.start(now);
+      return osc;
+    });
+    this.musicLayer = { gain, voices };
   }
 
   stopMusic() {
-    clearInterval(this.musicTimer);
-    this.musicTimer = null;
+    const layer = this.musicLayer;
+    if (!layer || !this.ctx) return;
+    this.musicLayer = null;
+    const now = this.ctx.currentTime;
+    layer.gain.gain.cancelAndHoldAtTime(now);
+    layer.gain.gain.linearRampToValueAtTime(0, now + .4);
+    let remaining = layer.voices.length;
+    layer.voices.forEach(voice => {
+      voice.onended = () => {
+        voice.disconnect();
+        if (--remaining === 0) layer.gain.disconnect();
+        voice.onended = null;
+      };
+      voice.stop(now + .45);
+    });
   }
 }

@@ -43,7 +43,9 @@ export class GridSystem {
 
   canEnter(fighter, c, r) {
     const t = this.tile(c, r);
-    if (!t || t.owner !== fighter.side || t.state === 'broken') return false;
+    if (!t || t.state === 'broken') return false;
+    // Shadow Step lets a fighter walk onto the other side's tiles for a while.
+    if (t.owner !== fighter.side && !(fighter.scene.clock < (fighter.shadowUntil || 0))) return false;
     const o = this.occupant(c, r);
     return !o || o === fighter;
   }

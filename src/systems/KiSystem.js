@@ -2,7 +2,10 @@
 import { Data } from '../core/data.js';
 
 export const KiSystem = {
-  /** Ki only regenerates naturally in base form; transformations burn it instead. */
+  /**
+   * Ki regenerates on its own only in base form. Transformed fighters (whose
+   * forms last the rest of the fight) must Charge Ki to refill it.
+   */
   update(fighter, dt) {
     if (fighter.kiCharging && fighter.alive && !fighter.locked && !fighter.blocking && fighter.scene.clock >= fighter.hurtUntil) {
       this.restore(fighter, ((Data.config.fighter.kiChargePerSec || 28) * dt) / 1000);

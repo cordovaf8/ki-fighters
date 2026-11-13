@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ki Legends</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=8bde323f7098">
   <style>
     /* Loading screen: shown while game.js (about 40 MB with all the fighter art) downloads. */
     #boot { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1em;
@@ -30,6 +30,7 @@
         <div class="bar hp" id="p-hpbar"><i id="p-hp"></i><b id="p-hpn"></b></div>
         <div class="bar ki"><i id="p-ki"></i><b id="p-kin"></b></div>
         <div class="bar st"><i id="p-st"></i></div>
+        <div class="bar pw" id="p-pwbar" title="Power: transform when full"><i id="p-pw"></i></div>
         <div class="status" id="p-status"></div>
       </div>
 
@@ -43,6 +44,7 @@
         <div class="who"><span class="fform" id="e-form"></span><span class="fname" id="e-name"></span></div>
         <div class="bar hp" id="e-hpbar"><i id="e-hp"></i><b id="e-hpn"></b></div>
         <div class="bar ki"><i id="e-ki"></i></div>
+        <div class="bar pw" id="e-pwbar"><i id="e-pw"></i></div>
         <div class="status" id="e-status"></div>
       </div>
 
@@ -101,10 +103,10 @@
       document.body.appendChild(s);
     }
 
-    if (location.protocol === 'file:' || !window.XMLHttpRequest || !window.URL || !URL.createObjectURL) return run('game.js');
+    if (location.protocol === 'file:' || !window.XMLHttpRequest || !window.URL || !URL.createObjectURL) return run('game.js?v=8bde323f7098');
 
     var x = new XMLHttpRequest();
-    x.open('GET', 'game.js');
+    x.open('GET', 'game.js?v=8bde323f7098');
     x.responseType = 'blob';
     x.onprogress = function (e) {
       var mb = (e.loaded / 1048576).toFixed(1);
@@ -117,13 +119,13 @@
       }
     };
     x.onload = function () {
-      if (x.status !== 200) return run('game.js'); // let the browser try it the plain way
+      if (x.status !== 200) return run('game.js?v=8bde323f7098'); // let the browser try it the plain way
       boot.classList.remove('unknown');
       fill.style.width = '100%';
       msg.textContent = 'Starting...';
       run(URL.createObjectURL(x.response));
     };
-    x.onerror = function () { run('game.js'); };
+    x.onerror = function () { run('game.js?v=8bde323f7098'); };
     x.send();
   })();
   </script>

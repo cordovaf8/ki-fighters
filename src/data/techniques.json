@@ -6,34 +6,34 @@
   },
   "techniques": {
     "rapid_barrage": {
-      "name": "Rapid Barrage", "type": "Energy", "school": "ki", "kiCost": 0, "power": "12 x5",
+      "name": "Rapid Barrage", "type": "Energy", "school": "ki", "kiCost": 0, "power": "18 x5",
       "desc": "Fire five rapid Ki blasts down your row.",
-      "effect": "projectiles", "params": { "rows": "self", "count": 5, "intervalMs": 90, "damage": 12 }
+      "effect": "projectiles", "params": { "rows": "self", "count": 5, "intervalMs": 90, "damage": 18 }
     },
     "scatter_shot": {
-      "name": "Scatter Shot", "type": "Energy", "school": "ki", "kiCost": 5, "power": "28",
+      "name": "Scatter Shot", "type": "Energy", "school": "ki", "kiCost": 5, "power": "60",
       "desc": "Launch one heavy blast down every row at once.",
-      "effect": "projectiles", "params": { "rows": "all", "count": 1, "intervalMs": 0, "damage": 28, "big": true, "heavy": true }
+      "effect": "projectiles", "params": { "rows": "all", "count": 1, "intervalMs": 0, "damage": 60, "big": true, "heavy": true }
     },
     "energy_wave": {
-      "name": "Energy Wave", "type": "Special", "school": "ki", "kiCost": 20, "power": "80",
+      "name": "Energy Wave", "type": "Special", "school": "ki", "kiCost": 20, "power": "130",
       "desc": "Charge, then fire a beam across your whole row. Can clash with enemy beams.",
-      "effect": "beam", "params": { "rows": "self", "chargeMs": 650, "durationMs": 500, "damage": 80 }
+      "effect": "beam", "params": { "rows": "self", "chargeMs": 650, "durationMs": 500, "damage": 130 }
     },
     "final_burst": {
-      "name": "Final Burst", "type": "Ultimate", "school": "ki", "kiCost": 45, "power": "150",
+      "name": "Final Burst", "type": "Ultimate", "school": "ki", "kiCost": 45, "power": "240",
       "desc": "A colossal beam that engulfs your row and the rows beside it.",
-      "effect": "beam", "params": { "rows": "wide", "chargeMs": 1100, "durationMs": 800, "damage": 150, "crack": true }
+      "effect": "beam", "params": { "rows": "wide", "chargeMs": 1100, "durationMs": 800, "damage": 240, "crack": true }
     },
     "meteor_rush": {
-      "name": "Meteor Rush", "type": "Melee", "school": "body", "kiCost": 10, "power": "14 x4",
+      "name": "Meteor Rush", "type": "Melee", "school": "body", "kiCost": 10, "power": "24 x4",
       "desc": "Vanish to the enemy's tile for a four-hit combo that knocks them back.",
-      "effect": "rush", "params": { "windupMs": 320, "hits": 4, "damage": 14, "knockback": 1 }
+      "effect": "rush", "params": { "windupMs": 320, "hits": 4, "damage": 24, "knockback": 1 }
     },
     "explosive_aura": {
-      "name": "Explosive Aura", "type": "Area", "school": "body", "kiCost": 15, "power": "55",
+      "name": "Explosive Aura", "type": "Area", "school": "body", "kiCost": 15, "power": "110",
       "desc": "Detonate a 3x3 blast centred three tiles ahead. Cracks the ground.",
-      "effect": "area", "params": { "ahead": 3, "radius": 1, "delayMs": 450, "damage": 55, "crack": true }
+      "effect": "area", "params": { "ahead": 3, "radius": 1, "delayMs": 450, "damage": 110, "crack": true }
     },
     "ground_seize": {
       "name": "Ground Seize", "type": "Area", "school": "body", "kiCost": 10, "power": "-",
@@ -52,28 +52,116 @@
     },
     "power_ascension": {
       "name": "Power Ascension", "type": "Transformation", "school": "spirit", "kiCost": 0, "power": "Form +1",
-      "desc": "Rise to your next form for free, with no Ki drain for 10 seconds.",
-      "effect": "ascend", "params": { "freeMs": 10000, "fallbackKi": 40 }
+      "desc": "Rise to your next form right away, without waiting for your power gauge to fill.",
+      "effect": "ascend", "params": { "fallbackKi": 40 }
+    },
+    "tracking_volley": {
+      "name": "Tracking Volley", "type": "Energy", "school": "ki", "kiCost": 8, "power": "26 x3",
+      "desc": "Three blasts, each aimed at whichever row your opponent is in when it fires.",
+      "effect": "projectiles", "params": { "rows": "foe", "count": 3, "intervalMs": 220, "damage": 26 }
+    },
+    "piercing_lance": {
+      "name": "Piercing Lance", "type": "Special", "school": "ki", "kiCost": 15, "power": "80",
+      "desc": "A lightning-fast lance of Ki down your row. It cannot be blocked.",
+      "effect": "projectiles", "params": { "rows": "self", "count": 1, "intervalMs": 0, "damage": 80, "speed": 3000, "unblockable": true }
+    },
+    "nova_sphere": {
+      "name": "Nova Sphere", "type": "Special", "school": "ki", "kiCost": 25, "power": "150 3x3",
+      "desc": "A slow, giant orb that bursts over a 3x3 area when it reaches your opponent. Ploughs through blasts and cracks the ground.",
+      "effect": "projectiles", "params": { "rows": "self", "count": 1, "intervalMs": 0, "damage": 150, "speed": 520, "big": true, "heavy": true, "burst": { "radius": 1, "crack": true } }
+    },
+    "starfall": {
+      "name": "Starfall", "type": "Area", "school": "ki", "kiCost": 18, "power": "50 x5",
+      "desc": "Ki meteors rain on five enemy tiles one after another. The first lands where your opponent stands.",
+      "effect": "meteors", "params": { "count": 5, "delayMs": 500, "intervalMs": 180, "damage": 50 }
+    },
+    "quake_stomp": {
+      "name": "Quake Stomp", "type": "Area", "school": "body", "kiCost": 12, "power": "55 + stun",
+      "desc": "Stamp a shockwave through the enemy's two front columns. Anyone caught in it is stunned.",
+      "effect": "quake", "params": { "depth": 2, "delayMs": 380, "damage": 55, "stunMs": 900 }
+    },
+    "titan_throw": {
+      "name": "Titan Throw", "type": "Melee", "school": "body", "kiCost": 12, "power": "90",
+      "desc": "Grab an opponent within punching reach and hurl them to the back of their side. Unblockable, and they land stunned.",
+      "effect": "grapple", "params": { "damage": 90, "stunMs": 600 }
+    },
+    "iron_body": {
+      "name": "Iron Body", "type": "Defense", "school": "body", "kiCost": 10, "power": "-50% dmg",
+      "desc": "For 6 seconds take half damage, and hits cannot stagger or stun you.",
+      "effect": "buff", "params": { "guardMs": 6000, "guardMul": 0.5 }
+    },
+    "battle_cry": {
+      "name": "Battle Cry", "type": "Support", "school": "body", "kiCost": 10, "power": "+50% atk",
+      "desc": "For 6 seconds every attack you land hits 50% harder.",
+      "effect": "buff", "params": { "powerMs": 6000, "powerMul": 1.5 }
+    },
+    "binding_ray": {
+      "name": "Binding Ray", "type": "Special", "school": "spirit", "kiCost": 12, "power": "28 + stun",
+      "desc": "A fast ray down your row that stuns your opponent for over a second.",
+      "effect": "projectiles", "params": { "rows": "self", "count": 1, "intervalMs": 0, "damage": 28, "speed": 2200, "stunMs": 1300 }
+    },
+    "soul_siphon": {
+      "name": "Soul Siphon", "type": "Special", "school": "spirit", "kiCost": 0, "power": "36, steal 30 Ki",
+      "desc": "A draining orb aimed at your opponent's row. On a hit it steals up to 30 of their Ki.",
+      "effect": "projectiles", "params": { "rows": "foe", "count": 1, "intervalMs": 0, "damage": 36, "speed": 1100, "stealKi": 30 }
+    },
+    "mending_breath": {
+      "name": "Mending Breath", "type": "Support", "school": "spirit", "kiCost": 15, "power": "+70 HP",
+      "desc": "Breathe deep to recover 70 Health. A heavy hit interrupts it.",
+      "effect": "heal", "params": { "amount": 70, "chargeMs": 700 }
+    },
+    "mirror_ward": {
+      "name": "Mirror Ward", "type": "Defense", "school": "spirit", "kiCost": 15, "power": "Reflect",
+      "desc": "For 4 seconds every projectile that reaches you is sent back, techniques included. Beams still get through.",
+      "effect": "mirror", "params": { "durationMs": 4000 }
+    },
+    "shadow_step": {
+      "name": "Shadow Step", "type": "Movement", "school": "spirit", "kiCost": 20, "power": "4s",
+      "desc": "Become a shadow for 4 seconds: you can't be hurt, and you can walk onto your opponent's tiles. When it ends you return to your own ground.",
+      "effect": "shadow", "params": { "durationMs": 4000 }
+    },
+    "grapple_hook": {
+      "name": "Grapple", "type": "Melee", "school": "body", "kiCost": 20, "power": "30 + 3-hit combo",
+      "desc": "Shoot a grapple hook down your row. If it catches your opponent, it reels you both to the front line and you unleash your full three-punch combo. It can't be blocked, but a blast can knock it away.",
+      "effect": "hook", "params": { "damage": 30, "speed": 1700 }
     }
   },
   "combos": [
     {
-      "id": "triple_energy_barrage", "name": "Triple Energy Barrage", "type": "Combo", "school": "ki", "kiCost": 10, "power": "12 x18",
+      "id": "triple_energy_barrage", "name": "Triple Energy Barrage", "type": "Combo", "school": "ki", "kiCost": 10, "power": "22 x18",
       "desc": "Three Energy techniques fuse into a storm of blasts across every row.",
       "recipe": { "type": "Energy", "count": 3 },
-      "effect": "projectiles", "params": { "rows": "all", "count": 6, "intervalMs": 80, "damage": 12 }
+      "effect": "projectiles", "params": { "rows": "all", "count": 6, "intervalMs": 80, "damage": 22 }
     },
     {
-      "id": "twin_surge_wave", "name": "Twin Surge Wave", "type": "Combo", "school": "ki", "kiCost": 35, "power": "120",
+      "id": "twin_surge_wave", "name": "Twin Surge Wave", "type": "Combo", "school": "ki", "kiCost": 35, "power": "260",
       "desc": "Two Energy Waves merge into a wide beam covering neighbouring rows.",
       "recipe": { "ids": ["energy_wave", "energy_wave"] },
-      "effect": "beam", "params": { "rows": "wide", "chargeMs": 700, "durationMs": 650, "damage": 120 }
+      "effect": "beam", "params": { "rows": "wide", "chargeMs": 700, "durationMs": 650, "damage": 260 }
     },
     {
-      "id": "comet_breaker", "name": "Comet Breaker", "type": "Combo", "school": "body", "kiCost": 20, "power": "14 x5 + 60",
+      "id": "comet_breaker", "name": "Comet Breaker", "type": "Combo", "school": "body", "kiCost": 20, "power": "26 x5 + 110",
       "desc": "Meteor Rush ends in an explosion that shatters the ground around the target.",
       "recipe": { "ids": ["meteor_rush", "explosive_aura"] },
-      "effect": "rush", "params": { "windupMs": 300, "hits": 5, "damage": 14, "knockback": 1, "finisher": { "radius": 1, "damage": 60, "crack": true } }
+      "effect": "rush", "params": { "windupMs": 300, "hits": 5, "damage": 26, "knockback": 1, "finisher": { "radius": 1, "damage": 110, "crack": true } }
+    },
+    {
+      "id": "meteor_storm", "name": "Meteor Storm", "type": "Combo", "school": "ki", "kiCost": 25, "power": "56 x9",
+      "desc": "Two Starfalls become a storm of nine meteors that crack the ground where they land.",
+      "recipe": { "ids": ["starfall", "starfall"] },
+      "effect": "meteors", "params": { "count": 9, "delayMs": 450, "intervalMs": 120, "damage": 56, "crack": true }
+    },
+    {
+      "id": "fortress_stance", "name": "Fortress Stance", "type": "Combo", "school": "body", "kiCost": 15, "power": "-50% dmg, +50% atk",
+      "desc": "Iron Body and Battle Cry together: for 7 seconds take half damage, shrug off staggers and hit 50% harder.",
+      "recipe": { "ids": ["iron_body", "battle_cry"] },
+      "effect": "buff", "params": { "guardMs": 7000, "guardMul": 0.5, "powerMs": 7000, "powerMul": 1.5 }
+    },
+    {
+      "id": "soul_prison", "name": "Soul Prison", "type": "Combo", "school": "spirit", "kiCost": 15, "power": "36 + stun, steal 25 Ki",
+      "desc": "Binding Ray and Soul Siphon fuse into rays down every row that stun and drain whoever they hit.",
+      "recipe": { "ids": ["binding_ray", "soul_siphon"] },
+      "effect": "projectiles", "params": { "rows": "all", "count": 1, "intervalMs": 0, "damage": 36, "speed": 2000, "stunMs": 1300, "stealKi": 25 }
     }
   ],
   "starterDeck": [

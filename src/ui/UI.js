@@ -10,6 +10,7 @@ import { Deck } from '../systems/TechniqueSystem.js';
 import { Hud } from './Hud.js';
 import { P, pad, key } from './prompts.js';
 import { rosterImages } from '../assets/roster-images.js';
+import { moveIllustration, movePowerLabel } from './MoveIllustration.js';
 
 const PORTRAITS = { jin: 0, sparring: 1, brakka: 5, selune: 6, vorr: 2, zeta: 4, draal: 10 };
 
@@ -23,7 +24,7 @@ const CONTROLS = [
   ['Punch combo: press up to 3 times. Hits the tile right in front of you', pad('y'), `${key('H')} / ${key('V')}`],
   ['Use your next selected technique', pad('a'), `${key('K')} / ${key('X')}`],
   ['Vanish (teleport, costs Ki). Hold a direction to aim it', pad('b'), key('Space')],
-  ['Transform, or power down', pad('lt'), `${key('T')} / ${key('F')}`],
+  ['Transform (when your power gauge is full)', pad('lt'), `${key('T')} / ${key('F')}`],
   ['Block (hold). Drains stamina', pad('rb'), `${key('L')} / ${key('C')}`],
   ['Charge Ki (hold). Stand still to restore energy', pad('rt'), key('R')],
   ['Open technique selection when Focus is full', pad('lb'), `${key('E')} / ${key('Enter')}`],
@@ -455,7 +456,7 @@ export class UI {
         const open = (f.unlockWins ?? 0) <= run.wins;
         const need = f.unlockWins - run.wins;
         return `<li class="${open ? 'open' : 'shut'}"><b>${f.name}</b>
-          <span>${open ? `Ready &middot; ${f.kiCost} Ki to enter, ${f.drain} Ki/s` : `Unlocks after ${need} more win${need > 1 ? 's' : ''}`}</span></li>`;
+          <span>${open ? 'Ready &middot; transform when your power gauge fills' : `Unlocks after ${need} more win${need > 1 ? 's' : ''}`}</span></li>`;
       })
       .join('');
     const isFinal = run.stage === run.ladder.length - 1;
@@ -608,9 +609,9 @@ export class UI {
             <li>When the <b>Focus Gauge</b> fills, press ${P('focus')} to pause and pick up to three techniques of the same school. Unpicked cards stay in your hand.</li>
             <li>Flashing tiles warn of an incoming beam, rush or explosion. Move, block or Vanish.</li>
             <li>Press and hold ${P('block')} just before a basic or charged blast hits to <b>parry</b> it back. The perfect window is ${Data.config.parry.windowMs} ms. Holding block longer guards normally; special attacks cannot be reflected.</li>
-            <li><b>Melee</b> reaches only the tile directly in front of you, so step up to the front line first. Press ${P('melee')} up to three times: two quick punches, then an uppercut that knocks the opponent back a tile. Blocking cuts the damage.</li>
+            <li><b>Melee</b> reaches the tile directly in front of you in base form, two tiles in your second form and three in your third. Only the tile in front gets your form's full power: each tile further out hits like one form lower. Parry a punch thrown from the tile right in front of you and the attacker is stunned for a second. Press ${P('melee')} up to three times: two quick punches, then an uppercut that knocks the opponent back a tile. Blocking cuts the damage.</li>
             <li>Fire a beam into an enemy beam to start a <b>Beam Clash</b>, then mash ${P('attack')}.</li>
-            <li>Transforming boosts attack and speed but burns Ki every second.</li>
+            <li>Your <b>power gauge</b> (under stamina) fills slowly during a fight, and faster when you land hits and techniques or parry. When it's full, press ${P('transform')} to transform. Forms last the rest of the fight, and the gauge then builds toward your next form.</li>
             <li>Cracked tiles collapse when stepped off. Captured tiles shrink a fighter's territory.</li>
           </ul>
         </div>
@@ -638,8 +639,8 @@ export class UI {
   // ---- Technique selection (during battle) --------------------------------
 
   showSelect(hand, player) {
-    this.sel = { hand: [...hand], picked: [], ki: Math.floor(player.ki), slots: Math.max(0, 5 - player.queue.length) };
-    this.renderSelect();
+    this.sel = { fighterId: player.id, hand: [...hand], picked: [], ki: Math.floor(player.ki), slots: Math.max(0, 5 - player.queue.length) };
+    this.renderSelect(true);
   }
 
   hideSelect() {
@@ -647,7 +648,7 @@ export class UI {
     this.render('');
   }
 
-  renderSelect() {
+  renderSelect(opening = false) {
     const { hand, picked, ki } = this.sel;
     const max = Math.min(Data.config.focusGauge.maxSelect, this.sel.slots);
     const pickedIds = picked.map((i) => hand[i]);
@@ -661,8 +662,9 @@ export class UI {
             <span class="ckey for-keys">${i + 1}</span>
             <span class="ctype">${t.type}</span>
             <strong>${t.name}</strong>
-            <span class="cpow">${t.power}</span>
+            ${moveIllustration(t, this.sel.fighterId)}
             <span class="cdesc">${t.desc}</span>
+            <span class="move-stat"><span>${movePowerLabel(t)}</span><b class="cpow">${t.power}</b></span>
             <span class="ccost ${t.kiCost > ki ? 'short' : ''}">${t.kiCost ? `${t.kiCost} Ki` : 'Free'}</span>
             <span class="cschool">${Data.schools[t.school].name}</span>
           </button>`;
@@ -674,7 +676,7 @@ export class UI {
     else if (pickedIds.length) summary = pickedIds.map((id) => `<span class="pill">${Data.techniques[id].name}</span>`).join('');
     this.render(`
       <div class="overlay select">
-        <div class="panel">
+        <div class="panel move-panel${opening ? ' entering' : ''}">
           <h2>Choose Techniques <span class="count">Ki ${ki}</span></h2>
           <div class="hand">${cards}</div>
           <div class="summary">${summary}</div>

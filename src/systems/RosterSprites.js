@@ -112,9 +112,15 @@ function buildPoseFighter(scene, key, form, poses) {
     tex.add(pose, 0, i * W, 0, W, H);
     if (pose === 'idle0') {
       // Keep the aura's original alignment independently of the new pose crops.
-      tex.auraLayout = scene.textures.exists('f_jin_1')
-        ? { ...scene.textures.get('f_jin_1').auraLayout }
-        : { scale: 248 / 315, originX: .5, originY: .96 };
+      if (form.auraStyle === 'jin-storm') {
+        const reference = scene.textures.get('jin-armor-01-idle').getSourceImage();
+        const bounds = figureBounds(reference);
+        tex.auraLayout = {
+          scale: Math.min(288 / bounds.width, 248 / bounds.height),
+          originX: (bounds.left + bounds.width / 2) / reference.width,
+          originY: (bounds.top + bounds.height) / reference.height,
+        };
+      } else tex.auraLayout = { scale: 248 / 315, originX: .5, originY: .96 };
     }
     if (pose === 'shoot') tex.handOffset = { x: w * .44, y: 3 + h * .71 };
     if (pose === 'special') tex.specialHandOffset = { x: w * .38, y: 3 + h * .62 };

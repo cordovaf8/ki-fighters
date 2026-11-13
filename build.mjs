@@ -5,7 +5,8 @@
 //   npm run build    build once
 //   npm run watch    rebuild on every save while editing
 import * as esbuild from 'esbuild';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { spriteAssets } from './build-sprite-assets.mjs';
 
 const watch = process.argv.includes('--watch');
@@ -33,6 +34,13 @@ const options = {
         build.onEnd((result) => {
           if (result.errors.length) return;
           const kb = (readFileSync('game.js').length / 1024).toFixed(0);
+          // Keep both loading paths and the stylesheet on the same build revision.
+          const revision = createHash('sha256').update(readFileSync('game.js'))
+            .update(readFileSync('css/style.css')).digest('hex').slice(0, 12);
+          const page = readFileSync('index.html', 'utf8')
+            .replace(/css\/style\.css(?:\?v=[a-f0-9]+)?/g, `css/style.css?v=${revision}`)
+            .replace(/'game\.js(?:\?v=[a-f0-9]+)?'/g, `'game.js?v=${revision}'`);
+          writeFileSync('index.html', page);
           console.log(`game.js ready (${kb} KB) - open index.html in a browser to play.`);
         });
       },

@@ -100,6 +100,14 @@ export class TechniqueSystem {
       counter: (f, p) => this.counter(f, p),
       restoreKi: (f, p) => this.restoreKi(f, p),
       ascend: (f, p) => this.ascend(f, p),
+      meteors: (f, p) => combat.meteors(f, p),
+      quake: (f, p) => combat.quake(f, p),
+      grapple: (f, p) => combat.grapple(f, p),
+      buff: (f, p) => this.buff(f, p),
+      heal: (f, p) => this.heal(f, p),
+      mirror: (f, p) => this.mirror(f, p),
+      shadow: (f, p) => this.shadowStep(f, p),
+      hook: (f, p) => combat.throwHook(f, p),
     };
   }
 
@@ -111,6 +119,7 @@ export class TechniqueSystem {
     const s = this.scene;
     s.fx.popText(f.pos.x, f.pos.y - 172, tech.name.toUpperCase(), tech.isCombo ? '#ffe14a' : '#ffffff', tech.isCombo ? 26 : 20);
     if (tech.isCombo) s.fx.flash(100, f.kiColor);
+    S.audio.play('technique', f);
     this.handlers[tech.effect](f, tech.params, tech);
     return 'ok';
   }
@@ -123,11 +132,15 @@ export class TechniqueSystem {
     for (let i = 0; i < p.count; i++) {
       s.after(i * p.intervalMs, () => {
         if (!f.alive || s.clock < f.hurtUntil) return;
-        const rows = p.rows === 'all' ? [...Array(s.grid.rows).keys()] : [f.row];
+        // 'foe' aims each shot at the row the opponent is in at that moment.
+        const rows = p.rows === 'all' ? [...Array(s.grid.rows).keys()] : p.rows === 'foe' ? [f.foe.row] : [f.row];
         for (const row of rows) {
-          s.combat.spawnProjectile(f, { row, damage: p.damage * f.atkMul, big: p.big, heavy: p.heavy });
+          s.combat.spawnProjectile(f, {
+            row, damage: p.damage * f.atkMul, big: p.big, heavy: p.heavy, speed: p.speed,
+            unblockable: p.unblockable, stunMs: p.stunMs, stealKi: p.stealKi, burst: p.burst,
+          });
         }
-        S.audio.play(p.big ? 'bigblast' : 'blast');
+        S.audio.play(p.big ? 'bigblast' : 'blast', f);
       });
     }
   }
@@ -164,9 +177,94 @@ export class TechniqueSystem {
     });
   }
 
+  /** Timed self-buffs: attack up (powerMs/powerMul) and/or guard (guardMs/guardMul). */
+  buff(f, p) {
+    const s = this.scene;
+    f.lockFor(260);
+    f.setPose('power', 320);
+    const labels = [];
+    if (p.powerMs) {
+      f.powerUntil = s.clock + p.powerMs;
+      f.powerMul = p.powerMul;
+      labels.push(`ATTACK +${Math.round((p.powerMul - 1) * 100)}%`);
+      s.fx.ring(f.pos.x, f.pos.y - 50, 0xff9040, 18, 120, 420);
+    }
+    if (p.guardMs) {
+      f.guardUntil = s.clock + p.guardMs;
+      f.guardMul = p.guardMul;
+      labels.push('IRON BODY');
+      s.fx.ring(f.pos.x, f.pos.y - 50, 0xc0c8d8, 24, 100, 420);
+    }
+    s.fx.popText(f.pos.x, f.pos.y - 150, labels.join(' + '), '#ffb070', 18);
+    S.audio.play('restore');
+  }
+
+  /** Channel briefly to recover health. A heavy hit interrupts it. */
+  heal(f, p) {
+    const s = this.scene;
+    let cancelled = false;
+    f.locked = true;
+    f.setPose('power');
+    f.action = { cancel: () => { cancelled = true; f.locked = false; f.clearPose(); } };
+    s.fx.ring(f.pos.x, f.pos.y - 50, 0x8dff96, 14, 70, p.chargeMs);
+    s.after(p.chargeMs, () => {
+      if (cancelled || !f.alive) return;
+      f.action = null;
+      f.locked = false;
+      f.clearPose();
+      const before = f.hp;
+      f.hp = Math.min(f.maxHp, f.hp + p.amount);
+      s.fx.ring(f.pos.x, f.pos.y - 50, 0x8dff96, 20, 110, 380);
+      s.fx.popText(f.pos.x, f.pos.y - 150, `+${Math.round(f.hp - before)} HP`, '#8dff96');
+      S.audio.play('restore');
+    });
+  }
+
+  /** For a few seconds every projectile that reaches you is reflected. */
+  mirror(f, p) {
+    const s = this.scene;
+    f.mirrorUntil = s.clock + p.durationMs;
+    f.lockFor(200);
+    f.setPose('block', 260);
+    s.fx.ring(f.pos.x, f.pos.y - 60, 0xd8c8ff, 30, 70, p.durationMs);
+    s.fx.popText(f.pos.x, f.pos.y - 150, 'MIRROR WARD', '#d8c8ff', 18);
+    S.audio.play('parry');
+  }
+
+  /** Shadow Step: invulnerable, and free to walk onto the opponent's tiles, for a few seconds. */
+  shadowStep(f, p) {
+    const s = this.scene;
+    const until = s.clock + p.durationMs;
+    f.shadowUntil = until;
+    f.invulnUntil = Math.max(f.invulnUntil, until);
+    f.lockFor(120);
+    s.fx.afterimage(f, 0x6a4c9c);
+    s.fx.ring(f.pos.x, f.pos.y - 50, 0x6a4c9c, 30, 90, 300);
+    S.audio.play('teleport');
+    s.after(p.durationMs, () => {
+      if (f.shadowUntil === until) this.endShadow(f);
+    });
+  }
+
+  /** When Shadow Step ends on enemy ground, snap back to the nearest tile of your own. */
+  endShadow(f) {
+    const s = this.scene;
+    const g = s.grid;
+    f.shadowUntil = 0;
+    const here = g.tile(f.col, f.row);
+    if (!f.alive || (here && here.owner === f.side)) return;
+    const options = g.openTiles(f).sort((a, b) =>
+      (Math.abs(a.row - f.row) * 10 + Math.abs(a.col - f.col)) - (Math.abs(b.row - f.row) * 10 + Math.abs(b.col - f.col)));
+    if (!options.length) return;
+    s.fx.afterimage(f, 0x6a4c9c);
+    f.placeAt(options[0].col, options[0].row);
+    s.fx.dust(f.pos.x, f.pos.y);
+    S.audio.play('teleport');
+  }
+
   ascend(f, p) {
     const s = this.scene;
-    if (!s.transform.ascend(f, { free: true, freeMs: p.freeMs })) {
+    if (!s.transform.ascend(f, { free: true })) {
       // Already at the highest unlocked form: convert the technique into Ki.
       KiSystem.restore(f, p.fallbackKi);
       s.fx.popText(f.pos.x, f.pos.y - 150, `+${p.fallbackKi} KI`, '#7fe8ff');

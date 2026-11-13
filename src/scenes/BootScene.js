@@ -1,3 +1,4 @@
+import { jinArmorImages } from '../assets/jin-armor-images.js';
 import Phaser from 'phaser';
 import { rosterImages } from '../assets/roster-images.js';
 import { attackImages } from '../assets/attack-images.js';
@@ -8,10 +9,10 @@ import { basePoseImages } from '../assets/base-pose-images.js';
 import { jinMeleeImages } from '../assets/jin-melee-images.js';
 import { rosterMeleeImages } from '../assets/roster-melee-images.js';
 import armorIdle from '../../assets/characters/jin/transformation-armor-01.png';
-import armorAttack from '../../assets/characters/jin/armor-01-attack.png';
-import armorBlock from '../../assets/characters/jin/armor-01-block.png';
-import armorSpecial from '../../assets/characters/jin/armor-01-special.png';
-import armorPunch from '../../assets/characters/jin/armor-01-punch.png';
+
+
+
+
 import stormAura from '../../assets/characters/jin/aura-subtle-layer.png';
 import idle0 from '../../assets/characters/jin/armor-02-idle0.png';
 import idle1 from '../../assets/characters/jin/armor-02-idle1.png';
@@ -33,6 +34,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload() {
+    Object.entries(jinArmorImages).forEach(([key, url]) => this.load.image(key, url));
     Object.entries(rosterMeleeImages).forEach(([key, url]) => this.load.image(key, url));
     Object.entries(jinMeleeImages).forEach(([key, url]) => this.load.image(key, url));
     Object.entries(basePoseImages).forEach(([key, url]) => this.load.image(key, url));
@@ -44,10 +46,10 @@ export class BootScene extends Phaser.Scene {
     blockImages.forEach((url, index) => this.load.image(`block-${index}`, url));
     specialImages.forEach((url, index) => this.load.image(`special-${index}`, url));
     this.load.image('jin-armor-01-idle', armorIdle);
-    this.load.image('jin-armor-01-attack', armorAttack);
-    this.load.image('jin-armor-01-block', armorBlock);
-    this.load.image('jin-armor-01-special', armorSpecial);
-    this.load.image('jin-armor-01-punch', armorPunch);
+
+
+
+
     this.load.image('jin-storm-aura', stormAura);
   }
 

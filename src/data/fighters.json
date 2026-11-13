@@ -55,7 +55,8 @@
         "note": "Enhanced Ki blasts",
         "spriteSet": "jin-armor-01",
         "auraStyle": "jin-storm",
-        "spriteScale": 1.03
+        "spriteScale": 1.03,
+        "poseSprites": true
       },
       {
         "id": "ascended",
@@ -595,7 +596,7 @@
     ]
   },
   "redhair": {
-    "name": "Red-Haired Fighter",
+    "name": "Kael Ignis",
     "title": "Flame Warrior",
     "archetype": "Flame Warrior",
     "playable": true,
@@ -675,7 +676,7 @@
     ]
   },
   "green": {
-    "name": "Green Alien",
+    "name": "Orun",
     "title": "Emerald Warrior",
     "archetype": "Emerald Warrior",
     "playable": true,
@@ -755,7 +756,7 @@
     ]
   },
   "redgi": {
-    "name": "Crimson Fighter",
+    "name": "Renzai",
     "title": "Crimson Martial Artist",
     "archetype": "Crimson Martial Artist",
     "playable": true,
@@ -835,7 +836,7 @@
     ]
   },
   "gold": {
-    "name": "Golden Fighter",
+    "name": "Aurelia Sol",
     "title": "Golden Warrior",
     "archetype": "Golden Warrior",
     "playable": true,
@@ -915,7 +916,7 @@
     ]
   },
   "mage": {
-    "name": "Ki Mage",
+    "name": "Vaelis",
     "title": "Energy Adept",
     "archetype": "Energy Adept",
     "playable": true,

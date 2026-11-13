@@ -5,12 +5,17 @@
   "fighter": { "startKiRatio": 0.5, "moveCooldownMs": 130, "blastCooldownMs": 260, "blastDamage": 8, "blastSpeed": 1500, "chargeMs": 800, "chargedDamage": 40, "kiRegenPerSec": 4, "staminaMax": 100, "staminaRegenPerSec": 18, "blockDrainPerSec": 22, "blockHitDrain": 12, "blockDamageMul": 0.3, "guardBreakRecover": 35, "teleportKiCost": 15, "teleportCooldownMs": 500, "teleportInvulnMs": 350, "hurtMs": 280, "heavyInvulnMs": 700 },
   "clash": { "durationMs": 4500, "pressPower": 0.04, "damageMul": 1.5 },
   "melee": {
-    "reach": 1, "chainWindowMs": 280, "hitstunMs": 330, "lungePx": 30, "hitstopMs": 40, "finisherRecoverMs": 260,
+    "reach": 1, "reachByForm": [1, 2, 3], "chainWindowMs": 280, "hitstunMs": 330, "lungePx": 30, "hitstopMs": 40, "parryStunMs": 1000, "finisherRecoverMs": 260,
+    "damageMul": 1.5,
     "strikes": [
-      { "pose": "punch", "windupMs": 80, "recoverMs": 150, "damage": 10 },
-      { "pose": "punchBack", "windupMs": 80, "recoverMs": 150, "damage": 12 },
-      { "pose": "uppercut", "windupMs": 110, "recoverMs": 300, "damage": 24, "heavy": true, "knockback": 1 }
+      { "pose": "punch", "windupMs": 80, "recoverMs": 150, "matches": "blast" },
+      { "pose": "punchBack", "windupMs": 80, "recoverMs": 150, "matches": "blast" },
+      { "pose": "uppercut", "windupMs": 110, "recoverMs": 300, "matches": "charged", "heavy": true, "knockback": 1 }
     ]
+  },
+  "transform": {
+    "max": 100, "passivePerSec": 1.875, "trainingMul": 3, "blockedMul": 0.5,
+    "gain": { "blast": 1.5, "charged": 3.75, "melee": 2.25, "meleeFinisher": 4.5, "techniquePerDamage": 0.1875, "parry": 9 }
   },
   "parry": { "windowMs": 140, "whiffLockMs": 380, "speedMul": 1.3, "maxSpeed": 3200, "damageMul": 1.5, "maxDamageMul": 3, "kiGain": 6, "hitstopMs": 70 },
   "run": {

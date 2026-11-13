@@ -27,12 +27,19 @@
       },
       "deck": [
         "meteor_rush",
-        "rapid_barrage"
+        "rapid_barrage",
+        "titan_throw",
+        "quake_stomp",
+        "battle_cry",
+        "grapple_hook"
       ],
       "queueSize": 1,
       "rewards": [
         "ground_seize",
-        "meteor_rush"
+        "meteor_rush",
+        "titan_throw",
+        "battle_cry",
+        "grapple_hook"
       ],
       "blurb": "A loud brawler who rules the canyon pits. Slow to react, but his rush hurts."
     },
@@ -65,12 +72,19 @@
         "energy_wave",
         "scatter_shot",
         "rapid_barrage",
-        "energy_charge"
+        "energy_charge",
+        "binding_ray",
+        "mirror_ward",
+        "soul_siphon",
+        "shadow_step"
       ],
       "queueSize": 2,
       "rewards": [
         "energy_wave",
-        "power_ascension"
+        "power_ascension",
+        "mirror_ward",
+        "binding_ray",
+        "shadow_step"
       ],
       "blurb": "An energy specialist who answers beams with beams. Expect a clash."
     },
@@ -104,13 +118,19 @@
         "explosive_aura",
         "ground_seize",
         "rapid_barrage",
-        "afterimage"
+        "afterimage",
+        "quake_stomp",
+        "iron_body",
+        "starfall",
+        "grapple_hook"
       ],
       "queueSize": 2,
       "rewards": [
         "explosive_aura",
         "scatter_shot",
-        "afterimage"
+        "afterimage",
+        "quake_stomp",
+        "iron_body"
       ],
       "blurb": "A raider from beyond the stars who steals ground and breaks what is left."
     },
@@ -144,12 +164,18 @@
         "scatter_shot",
         "explosive_aura",
         "final_burst",
-        "energy_charge"
+        "energy_charge",
+        "tracking_volley",
+        "piercing_lance",
+        "nova_sphere"
       ],
       "queueSize": 3,
       "rewards": [
         "final_burst",
-        "energy_charge"
+        "energy_charge",
+        "tracking_volley",
+        "nova_sphere",
+        "piercing_lance"
       ],
       "blurb": "A combat android with machine-perfect timing. It never wastes a shot."
     },
@@ -187,13 +213,22 @@
         "scatter_shot",
         "rapid_barrage",
         "afterimage",
-        "energy_charge"
+        "energy_charge",
+        "starfall",
+        "nova_sphere",
+        "soul_siphon",
+        "mending_breath",
+        "mirror_ward",
+        "shadow_step"
       ],
       "queueSize": 3,
       "rewards": [
         "final_burst",
         "power_ascension",
-        "energy_wave"
+        "energy_wave",
+        "starfall",
+        "soul_siphon",
+        "mending_breath"
       ],
       "blurb": "The warlord at the top of the ladder. He transforms twice. Bring everything."
     }
@@ -225,7 +260,11 @@
     },
     "deck": [
       "energy_wave",
-      "rapid_barrage"
+      "rapid_barrage",
+      "tracking_volley",
+      "binding_ray",
+      "quake_stomp",
+      "iron_body"
     ],
     "queueSize": 1,
     "rewards": [],

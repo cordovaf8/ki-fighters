@@ -84,6 +84,12 @@ kbd {
 .bar.ki i { background: linear-gradient(180deg, #9cecff, #2a86e0); }
 .bar.st { height: 0.35em; border-width: 0.06em; }
 .bar.st i { background: #f0c040; }
+.bar.pw { height: 0.45em; margin-top: 0.25em; border-width: 0.06em; }
+.bar.pw i { background: linear-gradient(90deg, #8a3cff, #ff6ad5); }
+.bar.pw.ready { box-shadow: 0 0 0.5em #ff6ad5; }
+.bar.pw.ready i { background: linear-gradient(90deg, #ff6ad5, #ffffff); animation: pulse 0.4s infinite alternate; }
+.bar.pw.max i { background: repeating-linear-gradient(90deg, #ff6ad5 0 0.6em, #c04cff 0.6em 1.2em); }
+.bar.pw.none { opacity: 0.35; }
 .bar.xp { height: 0.5em; }
 .bar.xp i { background: linear-gradient(90deg, #ffb020, #ffe14a); }
 
@@ -433,5 +439,29 @@ body[data-pad="xbox"] .gp[data-b="y"] { color: #ffe98a; border-color: #e0b830; }
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .card { transition: none; }
-  .focus.full .bar i, .focus.full .fready, .ctitle { animation: none; }
+  .focus.full .bar i, .focus.full .fready, .ctitle, .bar.pw.ready i { animation: none; }
 }
+
+/* Illustrated technique drawer. */
+.select { justify-content: flex-start; background: rgba(4,6,18,.72); }
+.select .move-panel { width: 58em; max-width: 98%; padding: 1em 1.1em; border-radius: 0 .6em .6em 0; border-left: 0; background: linear-gradient(135deg, #17243bfa, #090f24fa); }
+.select .hand { gap: .55em; justify-content: center; margin: 1em 0 .8em; }
+.select .card { width: 10.7em; height: 20.4em; padding: 1.4em .5em .5em; gap: .35em; border-radius: .25em; overflow: hidden; }
+.select .card strong { font-size: .87em; min-height: 2.2em; justify-content: center; font-style: normal; }
+.move-art { display: block; width: 100%; border: 1px solid #ffffff35; border-radius: .2em; overflow: hidden; background: #101d33; }
+.move-art svg { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.move-art-caption { display: block; font-size: .55em; text-transform: uppercase; letter-spacing: .1em; padding: .3em; background: #050b18; color: #b7cce5; }
+.select .card .cdesc { font-size: .65em; line-height: 1.4; text-align: left; opacity: 1; color: #d8e3f1; width: 100%; padding: .25em .2em; }
+.move-stat { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: .3em; border-top: 1px solid #ffffff25; padding-top: .35em; }
+.move-stat > span { font-size: .6em; color: #a6bbd4; }
+.select .move-stat .cpow { font-size: 1em; }
+.select .ccost { font-size: .66em; }
+.select .card.on { border-color: #fff1a3; }
+.move-orb { animation: move-orb-glow 1.4s ease-in-out infinite alternate; }
+.move-burst { animation: move-orb-glow 1.8s ease-in-out infinite alternate; }
+@keyframes move-orb-glow { from { opacity: .55; } to { opacity: 1; } }
+@keyframes move-drawer-in { from { transform: translateX(-5em); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .select .move-panel, .move-orb, .move-burst { animation: none; } }
+
+.select .move-panel.entering { animation: move-drawer-in .2s ease-out; }
+@media (prefers-reduced-motion: reduce) { .select .move-panel.entering { animation: none; } }

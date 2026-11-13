@@ -6,7 +6,7 @@
 import Phaser from 'phaser';
 import { Data, S } from '../core/data.js';
 import { bus } from '../core/bus.js';
-import { drawBackdrop } from '../systems/SpriteFactory.js';
+import { drawOpponentArena } from '../systems/OpponentArenas.js';
 import { GridSystem } from '../systems/GridSystem.js';
 import { Fighter } from '../systems/Fighter.js';
 import { CombatSystem } from '../systems/CombatSystem.js';
@@ -46,7 +46,7 @@ export class BattleScene extends Phaser.Scene {
     this.pressed = new Set();
     this.state = 'intro';
 
-    drawBackdrop(this, opp.stage);
+    drawOpponentArena(this, opp.fighter);
     this.fx = new EffectsSystem(this);
     this.grid = new GridSystem(this, cfg.grid);
     this.combat = new CombatSystem(this);
@@ -314,3 +314,4 @@ export class BattleScene extends Phaser.Scene {
     });
   }
 }
+

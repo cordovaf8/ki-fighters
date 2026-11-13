@@ -69,7 +69,7 @@ export class RunSystem {
     return max;
   }
 
-  /** The player spec a battle needs. Training gets every form to practise with. */
+  /** The player spec a battle needs. Training gets every form and one of every technique to practise with. */
   playerSpec(mode) {
     if (mode === 'training') {
       return {
@@ -77,7 +77,7 @@ export class RunSystem {
         def: this.fighterDef,
         stats: { ...this.fighterDef.stats },
         maxForm: this.fighterDef.forms.length - 1,
-        deck: [...Data.starterDeck],
+        deck: Object.keys(Data.techniques),
       };
     }
     return { id: this.fighterId, def: this.fighterDef, stats: this.stats(), maxForm: this.maxForm(), deck: [...this.deck] };

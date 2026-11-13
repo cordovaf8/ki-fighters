@@ -59,9 +59,8 @@ export class EnemyAI {
       }
     }
 
-    // 2. Power up when there is Ki to spare.
-    const next = s.transform.nextForm(me);
-    if (next && me.ki >= next.kiCost + 20 && Math.random() < 0.3 && s.transform.ascend(me)) return;
+    // 2. Power up once the power gauge is full.
+    if (s.transform.ready(me) && Math.random() < 0.3 && s.transform.ascend(me)) return;
 
     // 2b. Punch when the player is standing right in front.
     if (s.melee.inReach(me) && Math.random() < (c.melee ?? c.aggression * 0.5) && s.melee.press(me)) return;
@@ -119,6 +118,17 @@ export class EnemyAI {
       this.blockUntil = now + win + 80;
       return;
     }
+    // Punches from the tile right in front can be parried too (stunning the puncher).
+    const foe = me.foe;
+    const st = foe.melee;
+    if (st?.busy && st.hitAt > now && st.hitAt - now <= win * 0.7 && (me.col - foe.col) * foe.facing === 1 && me.row === foe.row) {
+      if (this.meleeParryRoll === st.token) return; // one decision per strike
+      this.meleeParryRoll = st.token;
+      if (Math.random() >= chance) return;
+      if (me.blocking) me.stopBlock();
+      me.startBlock(true);
+      this.blockUntil = now + win + 80;
+    }
   }
 
   /** Mid-combo, decide (once per strike) whether to throw the next punch. */
@@ -148,6 +158,26 @@ export class EnemyAI {
         return this.scene.grid.frontierColumn(me.side) !== null ? true : 'skip';
       case 'ascend':
         return true;
+      case 'meteors':
+        return true; // the first meteor always targets the foe's tile
+      case 'quake': {
+        const g = this.scene.grid;
+        let front = me.col + me.facing;
+        while (g.inBounds(front, 0) && !g.tiles[front].some((x) => x.owner === foe.side)) front += me.facing;
+        const depth = (foe.col - front) * me.facing;
+        return depth >= 0 && depth < p.depth ? true : 'skip';
+      }
+      case 'grapple':
+        return this.scene.melee.inReach(me);
+      case 'hook':
+        return me.row === foe.row;
+      case 'heal':
+        return me.hp < me.maxHp * 0.6 ? true : 'skip';
+      case 'mirror':
+      case 'shadow':
+        return this.scene.combat.threatAt(me.side, me.col, me.row) ? true : 'skip';
+      case 'buff':
+        return p.guardMs && !p.powerMs ? (me.hp < me.maxHp * 0.7 ? true : 'skip') : true;
       default:
         return true;
     }
@@ -160,6 +190,10 @@ export class EnemyAI {
     if (t.effect === 'area') {
       const wantCol = foe.col - me.facing * t.params.ahead;
       if (wantCol !== me.col && this.safeMove(Math.sign(wantCol - me.col), 0)) return true;
+    }
+    if (t.effect === 'grapple') {
+      if (this.stepToRow(foe.row)) return true;
+      return this.safeMove(me.facing, 0);
     }
     return this.stepToRow(foe.row);
   }

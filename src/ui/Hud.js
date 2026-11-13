@@ -53,8 +53,21 @@ export class Hud {
   status(f, now) {
     if (f.guardBroken) return 'GUARD BROKEN';
     if (now < f.counterUntil) return 'AFTERIMAGE READY';
-    if (f.formIndex > 0 && now < f.freeFormUntil) return 'NO KI DRAIN';
+    if (now < (f.shadowUntil || 0)) return 'SHADOW STEP';
+    if (now < (f.mirrorUntil || 0)) return 'MIRROR WARD';
+    const buffs = [f.guarded && 'IRON BODY', now < (f.powerUntil || 0) && 'ATTACK UP'].filter(Boolean);
+    if (buffs.length) return buffs.join(' + ');
+    if (f.scene.transform.ready(f)) return 'TRANSFORM READY';
     return '';
+  }
+
+  /** Power gauge: fills toward the next form; pulses when ready, solid gold at the top form. */
+  power(side, f) {
+    const tf = f.scene.transform;
+    this.put(`${side}-pw`, 'scale', tf.ratio(f).toFixed(3));
+    this.put(`${side}-pwbar`, 'ready', tf.ready(f));
+    this.put(`${side}-pwbar`, 'max', !tf.nextForm(f) && f.formIndex > 0);
+    this.put(`${side}-pwbar`, 'none', !tf.nextForm(f) && f.formIndex === 0);
   }
 
   update(p, e, gauge) {
@@ -67,6 +80,7 @@ export class Hud {
     this.put('p-ki', 'scale', ratio(p.ki, p.maxKi));
     this.put('p-kin', 'text', `KI ${Math.floor(p.ki)}`);
     this.put('p-st', 'scale', ratio(p.stamina, Data.config.fighter.staminaMax));
+    this.power('p', p);
     this.put('p-form', 'text', p.formIndex ? p.form.name : '');
     this.put('p-status', 'text', this.status(p, now));
 
@@ -74,6 +88,7 @@ export class Hud {
     this.put('e-hpn', 'text', `${Math.ceil(e.hp)}`);
     this.put('e-hpbar', 'low', e.hp < e.maxHp * 0.3);
     this.put('e-ki', 'scale', ratio(e.ki, e.maxKi));
+    this.power('e', e);
     this.put('e-form', 'text', e.formIndex ? e.form.name : '');
     const pips = e.queue.length ? `TECHNIQUES ${'◆'.repeat(e.queue.length)}` : '';
     this.put('e-status', 'text', this.status(e, now) || pips);

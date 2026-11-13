@@ -74,7 +74,13 @@ export class Fighter {
 
   get form() { return this.def.forms[this.formIndex]; }
   get speedMul() { return this.form.speed; }
-  get atkMul() { return (this.atkStat / 100) * this.form.atk; }
+  get atkMul() {
+    // Battle Cry style buffs raise attack for a few seconds.
+    const buff = this.scene.clock < (this.powerUntil || 0) ? this.powerMul : 1;
+    return (this.atkStat / 100) * this.form.atk * buff;
+  }
+  /** Iron Body style buffs: less damage taken and no stagger. */
+  get guarded() { return this.scene.clock < (this.guardUntil || 0); }
   get handOffset() {
     const texture = this.sprite.texture;
     return this.pose === 'special' || this.pose === 'beam' ? texture.specialHandOffset : texture.handOffset;
@@ -107,7 +113,7 @@ export class Fighter {
     this.kiCharging = true;
     this.chargeStart = null;
     this.setPose('power');
-    if (this.ki < this.maxKi) S.audio.play('beamcharge');
+    if (this.ki < this.maxKi) S.audio.play('beamcharge', this);
     return true;
   }
 
@@ -202,7 +208,7 @@ export class Fighter {
     const damage = (charged ? (this.hasPerk('chargedBeam') ? 70 : cfg.chargedDamage) : cfg.blastDamage * (boost ? 1.5 : 1)) * this.atkMul;
     s.combat.spawnProjectile(this, { row: this.row, damage, heavy: charged, big: charged, mid: boost && !charged, parryable: true });
     this.setPose('shoot', charged ? 240 : 180);
-    S.audio.play(charged ? 'bigblast' : 'blast');
+    S.audio.play(charged ? 'bigblast' : 'blast', this);
     return true;
   }
 
@@ -214,6 +220,7 @@ export class Fighter {
   startBlock(allowParry = true) {
     if (this.blocking || this.guardBroken || !this.canAct()) return;
     this.blocking = true;
+    S.audio.play('guard', this);
     this.clearPose();
     this.chargeStart = null;
     const now = this.scene.clock;
@@ -233,6 +240,7 @@ export class Fighter {
     this.parryReadyAt = now; // a clean parry can chain straight into the next one
     this.parries++;
     KiSystem.restore(this, Data.config.parry.kiGain);
+    s.transform?.gain(this, 'parry');
     if (!this.blocking) this.setPose('block', 160);
     this.flashUntil = s.time.now + 90;
     const hx = p.x;
@@ -280,6 +288,7 @@ export class Fighter {
     }
 
     let dmg = (hit.amount * 100) / this.defStat;
+    if (this.guarded) dmg *= this.guardMul;
     this.stopKiCharge();
     let blocked = false;
     if (this.blocking && !hit.unblockable) {
@@ -290,6 +299,8 @@ export class Fighter {
     }
     dmg = Math.max(1, Math.round(dmg));
     this.hp = Math.max(0, this.hp - dmg);
+    // Landing a hit builds the attacker's power gauge.
+    s.transform?.gain(this.foe, hit.kind || 'blast', dmg, blocked);
 
     const fxY = this.pos.y - 70;
     s.fx.damageNumber(this.pos.x, this.pos.y - 130, dmg, blocked ? '#9fd0ff' : this.side === 'player' ? '#ff8a8a' : '#ffe14a');
@@ -304,7 +315,7 @@ export class Fighter {
     }
     if (!blocked && hit.heavy) {
       s.fx.shake(140, 0.008);
-      if (!this.armor) {
+      if (!this.armor && !this.guarded) {
         this.interrupt();
         this.hurtUntil = now + cfg.hurtMs;
         this.setPose('hurt', cfg.hurtMs);
@@ -315,6 +326,7 @@ export class Fighter {
   }
 
   breakGuard() {
+    S.audio.play('guardbreak', this);
     this.stamina = 0;
     this.guardBroken = true;
     this.stopBlock();
@@ -331,6 +343,8 @@ export class Fighter {
   }
 
   ko() {
+    if (!this.alive) return;
+    S.audio.play('defeat', this);
     this.alive = false;
     this.interrupt();
     this.locked = true;
@@ -355,6 +369,17 @@ export class Fighter {
     const cfg = Data.config.fighter;
     const now = this.scene.clock;
     KiSystem.update(this, dt);
+    const chargingShot = this.chargeStart !== null && now - this.chargeStart > 160;
+    if (this.kiCharging || chargingShot) {
+      if (now >= (this.nextChargeSoundAt ?? 0)) {
+        S.audio.play('charge', this);
+        this.nextChargeSoundAt = now + 180;
+      }
+      if (chargingShot && now - this.chargeStart >= Data.config.fighter.chargeMs && !this.chargeSoundReady) {
+        S.audio.play('charged', this);
+        this.chargeSoundReady = true;
+      }
+    } else { this.nextChargeSoundAt = 0; this.chargeSoundReady = false; }
 
     if (this.blocking) {
       this.stamina -= (cfg.blockDrainPerSec * dt) / 1000;
@@ -400,7 +425,8 @@ export class Fighter {
       else this.sprite.clearTint();
     }
     let alpha = 1;
-    if (this.alive && now < this.invulnUntil) alpha = Math.floor(time / 50) % 2 ? 0.35 : 0.9;
+    if (this.alive && now < (this.shadowUntil || 0)) alpha = 0.45 + 0.15 * Math.sin(time / 90); // Shadow Step: a steady ghostly fade
+    else if (this.alive && now < this.invulnUntil) alpha = Math.floor(time / 50) % 2 ? 0.35 : 0.9;
     else if (this.alive && now < this.counterUntil) alpha = 0.7 + 0.2 * Math.sin(time / 70);
     this.sprite.setAlpha(alpha);
 

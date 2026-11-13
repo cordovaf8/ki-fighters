@@ -209,3 +209,29 @@ test('interrupting a manual Ki charge clears its pose and stops transformed rege
   assert.equal(player.kiCharging, false);
   assert.equal(player.pose, null);
 });
+
+test('defeat voice belongs to the defeated fighter and plays only once', () => {
+  const { player } = setup(), sounds = [], original = S.audio;
+  S.audio = { play(name, fighter) { sounds.push([name, fighter?.id]); } };
+  try {
+    player.id = 'brakka'; player.aura = player.orb = { setVisible() {} };
+    player.ko(); player.ko();
+    assert.deepEqual(sounds.filter(([name]) => name === 'defeat'), [['defeat', 'brakka']]);
+  } finally { S.audio = original; }
+});
+
+test('charging audio is throttled, ready sounds once, and cancellation stops it', () => {
+  const { player, scene } = setup(), sounds = [], original = S.audio;
+  S.audio = { play(name) { sounds.push(name); } };
+  try {
+    player.chargeStart = scene.clock - Data.config.fighter.chargeMs;
+    player.update(16); player.update(16);
+    assert.equal(sounds.filter(x => x === 'charge').length, 1);
+    assert.equal(sounds.filter(x => x === 'charged').length, 1);
+    scene.clock += 180; player.update(16);
+    assert.equal(sounds.filter(x => x === 'charge').length, 2);
+    player.chargeStart = null; scene.clock += 180; player.update(16);
+    assert.equal(sounds.filter(x => x === 'charge').length, 2);
+    assert.equal(player.chargeSoundReady, false);
+  } finally { S.audio = original; }
+});
